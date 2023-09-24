@@ -205,6 +205,21 @@
           $("#login-box").hide();
           $("#register-box").show();
         });
+
+        //when sign in button was click
+        $("#login-link").click(function(){
+          $("#register-box").hide();
+          $("#login-box").show();
+        });
+
+
+
+
+
+
+
+
+        
     });
 
 
