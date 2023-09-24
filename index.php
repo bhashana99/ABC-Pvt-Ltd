@@ -151,6 +151,44 @@
 
 
     <!-- forgot password form start -->
+    <div class="row justify-content-center wrapper" id="forgot-box"  >
+        <div class="col-lg-10 mt-5 mb-auto">
+            <div class="text-center p-0 m-0"><img src="./images/company_profile.png" alt=""></div>
+                <div class="card-group myShadow">
+                  <div class="card justify-content-center rounded-left myColor p-4">
+                      <h1 class="text-center font-weight-bold text-white">Reset Password</h1>
+                      <hr class="my-3 bg-light myHr">             
+                      <button class="btn btn-outline-light btn-lg align-self-center 
+                      font-weight-bolder mt-4 myLinkBtn" id="back-link" >Back</button>
+                    </div>
+                    <div class="card rounded-right p-4" style="flex-grow:1.4;">
+                        <h1 class="text-center font-weight-bold text-primary ">Forgot Your Password</h1>
+                        <hr class="my-3">
+                        <p class="lead text-center text-secondary ">To reset your password,enter the registered e-mail address and
+                           we will send you the rest instructions on your email!</p>
+                        <form action="#" method="post" class="px-3" id="forgot-form">
+                          <div id="forgotAlert"></div>
+                            <div class="input-group input-group-lg form-group my-2">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text rounded-0" >
+                                        <i class="far fa-envelope  fa-lg"></i>
+                                    </span>
+                                </div>
+                                <input type="email" name="email" id="femail" class="form-control rounded-0 "
+                                placeholder="E-Mail" required >
+                            </div>
+                            
+                            
+                            <div class="form-group">
+                              <input type="submit" value="Reset Password" id="forgot-btn" 
+                              class="btn btn-primary btn-lg btn-block myBtn" >
+                            </div>
+                        </form>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
     <!-- forgot password form end -->
 </div>
 
