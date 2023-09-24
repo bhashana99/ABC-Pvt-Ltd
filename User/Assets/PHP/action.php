@@ -31,6 +31,7 @@ if(isset($_POST['action']) && $_POST['action'] == 'register'){
     else{
         if($user->register($name,$email,$hpass,$phone)){
            echo 'register';   
+           $_SESSION['user'] = $email;
         }
         else{
             echo $user->showMessage('danger','Something went wrong! try again later!');
