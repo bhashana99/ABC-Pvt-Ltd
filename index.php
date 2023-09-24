@@ -4,16 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login | ABC Phone Store</title>
-    <link rel="stylesheet" href="style.css">
     <script src="https://kit.fontawesome.com/fad89713bc.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    
-    
 
-
-
-
+<div class="container">
+    <!-- Login form start -->
+    <!-- Login form end -->
+</div>
 
 
 
