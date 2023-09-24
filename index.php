@@ -68,7 +68,85 @@
     <!-- Login form end -->
 
     <!-- register form start -->
-    
+    <div class="row justify-content-center wrapper" id="register-box">
+            <div class="col-lg-10 mt-1 mb-auto">
+            <div class="text-center p-0 m-0"><img src="./images/company_profile.png" alt=""></div>
+                <div class="card-group myShadow">
+                <div class="card justify-content-center rounded-left myColor p-4">
+                      <h1 class="text-center font-weight-bold text-white">Welcome Back</h1>
+                      <hr class="my-3 bg-light myHr">
+                      <p class="text-center font-weight-bolder text-light lead"> Welcome back! Sign in to access your account and enjoy our services.</p>
+                      <button class="btn btn-outline-light btn-lg align-self-center 
+                      font-weight-bolder mt-4 myLinkBtn" id="login-link" >Sign In</button>
+                    </div>
+                    <div class="card rounded-right p-4">
+                        <h1 class="text-center font-weight-bold text-primary ">Register</h1>
+                        <hr class="myHr">
+                        
+                        <form action="#" method="post" class="px-3" id="register-form">
+                          <div id="regAlert"></div>
+                            <div class="input-group input-group-lg form-group my-2">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text rounded-0" >
+                                        <i class="far fa-user  fa-lg"></i>
+                                    </span>
+                                </div>
+                                <input type="text" name="name" id="name" class="form-control rounded-0 "
+                                placeholder="Full Name" required >
+                            </div>
+
+                            <div class="input-group input-group-lg form-group my-2">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text rounded-0" >
+                                        <i class="far fa-envelope  fa-lg"></i>
+                                    </span>
+                                </div>
+                                <input type="email" name="email" id="remail" class="form-control rounded-0 "
+                                placeholder="abc@mail.com" required >
+                            </div>
+
+                            <div class="input-group input-group-lg form-group my-2">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text rounded-0" >
+                                    <i class="fa-solid fa-mobile-retro fa-lg"></i>
+                                    </span>
+                                </div>
+                                <input type="tel" name="phone" id="phone"  pattern="^\+94\d{9}$" class="form-control rounded-0 "
+                                placeholder="+94xxxxxxxxx" required >
+                            </div>
+
+                            <div class="input-group input-group-lg form-group my-2">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text rounded-0" >
+                                        <i class="fas fa-key  fa-lg"></i>
+                                    </span>
+                                </div>
+                                <input type="password" name="password" id="rpassword" class="form-control rounded-0 "
+                                placeholder="Password" required minlength="5" >
+                            </div>
+                            <div class="input-group input-group-lg form-group my-2">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text rounded-0" >
+                                        <i class="fas fa-key  fa-lg"></i>
+                                    </span>
+                                </div>
+                                <input type="password" name="cpassword" id="cpassword" class="form-control rounded-0 "
+                                placeholder="Confirm Password" required minlength="5" >
+                            </div>
+
+                            <div class="form-group">
+                              <div class="text-danger font-weight-bold" id="passError"></div>
+                            </div>
+                            <div class="form-group">
+                              <input type="submit" value="Sign Up" id="register-btn" 
+                              class="btn btn-primary btn-lg btn-block myBtn" >
+                            </div>
+                        </form>
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
     <!-- register form end -->
 </div>
 
