@@ -148,6 +148,10 @@
             </div>
         </div>
     <!-- register form end -->
+
+
+    <!-- forgot password form start -->
+    <!-- forgot password form end -->
 </div>
 
 
