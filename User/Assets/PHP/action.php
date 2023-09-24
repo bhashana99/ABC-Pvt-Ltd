@@ -1,5 +1,15 @@
 <?php
 session_start();
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
+//Load Composer's autoloader
+require 'vendor/autoload.php';
+
+//Create an instance; passing `true` enables exceptions
+$mail = new PHPMailer(true);
+
 require_once 'user_db.php';
 
 $user = new UserDB;
@@ -58,6 +68,55 @@ if(isset($_POST['action']) && $_POST['action'] == 'login'){
     }
     else{
             echo $user->showMessage('danger','This Email Not Registered');
+    }
+}
+
+ // Handel Forgot Password Ajax Request
+ if(isset($_POST['action']) && $_POST['action'] == 'forgot'){
+    // print_r($_POST);
+
+    $email =$user->test_input($_POST['email']);
+
+    $user_found = $user->currentUser($email);
+
+    if($user_found != null){
+        $token = uniqid();
+        $token = str_shuffle($token);
+
+        $user->forgot_password($token,$email);
+
+        try{
+            //Server settings
+             //$mail->SMTPDebug = SMTP::DEBUG_SERVER;
+            $mail->isSMTP();
+            $mail->Host = 'smtp.gmail.com';
+            $mail->SMTPAuth = true;
+            $mail->Username = Database::USERNAME;
+            $mail->Password = Database::PASSWORD;
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+            $mail->Port = 465;
+            
+            //Recipients
+            $mail->setFrom(Database::USERNAME,'ABC Phone Store');
+            $mail->addAddress($email);
+
+            //Content
+            $mail->isHTML(true);
+            $mail->Subject = 'Reset Password';
+            $mail->Body = '<h3>Click the below link to reset your password.<br><br><a href="http://localhost/project/SENG-21253/ABC(Pvt)Ltd/User/reset-pass.php?email='.$email.'&token='.$token.'">Reset to password Click Here</a></h3>';
+            
+    
+            $mail->send();
+            echo $user->showMessage('success','We have send you the reset link in your e-mail ID, please check your e-mail!');
+        }
+        catch(Exception $e){
+            echo $user->showMessage('danger','Something went wrong please try again later!');
+            
+        }
+    }
+    else{
+        echo $user->showMessage('info','This e-mail is not registered!');
+        
     }
 }
 

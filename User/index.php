@@ -285,6 +285,27 @@
           }
         });
 
+         //Forgot Password Ajax Request
+         $("#forgot-btn").click(function(e){
+          if($("#forgot-form")[0].checkValidity()){
+            e.preventDefault();
+
+            $("#forgot-btn").val('Please Wait...');
+
+            $.ajax({
+              url: 'assets/php/action.php',
+              method: 'post',
+              data: $("#forgot-form").serialize()+'&action=forgot',
+              success:function(response){
+                //console.log(response);
+                $("#forgot-btn").val('Reset Password');
+                $("#forgot-form")[0].reset();
+                $("#forgotAlert").html(response);
+              }
+            })
+          }
+        })
+
 
 
 
