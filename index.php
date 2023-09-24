@@ -66,6 +66,10 @@
             </div>
         </div>
     <!-- Login form end -->
+
+    <!-- register form start -->
+    
+    <!-- register form end -->
 </div>
 
 
