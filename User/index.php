@@ -68,7 +68,7 @@
     <!-- Login form end -->
 
     <!-- register form start -->
-    <div class="row justify-content-center wrapper" id="register-box">
+    <div class="row justify-content-center wrapper" id="register-box" style="display: none;">
             <div class="col-lg-10 mt-1 mb-auto">
             <div class="text-center p-0 m-0"><img src="../images/company_profile.png" alt=""></div>
                 <div class="card-group myShadow">
@@ -151,7 +151,7 @@
 
 
     <!-- forgot password form start -->
-    <div class="row justify-content-center wrapper" id="forgot-box"  >
+    <div class="row justify-content-center wrapper" id="forgot-box" style="display: none;" >
         <div class="col-lg-10 mt-5 mb-auto">
             <div class="text-center p-0 m-0"><img src="../images/company_profile.png" alt=""></div>
                 <div class="card-group myShadow">
@@ -197,7 +197,25 @@
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-   
+ 
+<script>
+    $(document).ready(function(){
+        //When Register button was click
+        $("#register-link").click(function(){
+          $("#login-box").hide();
+          $("#register-box").show();
+        });
+    });
+
+
+</script>
+
+
+
+
+
+
+
 
 </body>
 </html>
