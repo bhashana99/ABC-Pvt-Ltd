@@ -218,6 +218,12 @@
           $("#forgot-box").show();
         });
 
+        //when back button was click
+        $("#back-link").click(function(){
+          $("#forgot-box").hide();
+          $("#login-box").show();
+        });
+
 
 
 
