@@ -28,7 +28,9 @@
                                     </span>
                                 </div>
                                 <input type="email" name="email" id="email" class="form-control rounded-0 "
-                                placeholder="E-Mail" required >
+                                placeholder="E-Mail" required value="<?php if(isset($_COOKIE['email'])) {
+                                  echo $_COOKIE['email'];
+                                }  ?>" >
                             </div>
                             <div class="input-group input-group-lg form-group my-2">
                                 <div class="input-group-prepend">
@@ -37,11 +39,14 @@
                                     </span>
                                 </div>
                                 <input type="password" name="password" id="password" class="form-control rounded-0 "
-                                placeholder="Password" required >
+                                placeholder="Password" required  value="<?php if(isset($_COOKIE['password'])) {
+                                  echo $_COOKIE['password'];
+                                }  ?>" >
                             </div>
                             <div class="form-group">
                               <div class="custom-control custom-checkbox float-left">
                                 <input type="checkbox" name="rem" id="customCheck" class="custom-control-input" 
+                                <?php if(isset($_COOKIE['email'])){ ?> checked <?php } ?>  
                                 >
                                 <label for="customCheck" class="custom-control-label" >Remember me</label>
                               </div>  
