@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login | ABC Phone Store</title>
     <script src="https://kit.fontawesome.com/fad89713bc.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./Assets/CSS/style.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.css">
 </head>
 <body>
@@ -14,7 +14,7 @@
     <!-- Login form start -->
     <div class="row justify-content-center wrapper" id="login-box" >
             <div class="col-lg-10 mt-5 mb-auto">
-            <div class="text-center p-0 m-0"><img src="./images/company_profile.png" alt=""></div>
+            <div class="text-center p-0 m-0"><img src="../images/company_profile.png" alt=""></div>
                 <div class="card-group myShadow">
                     <div class="card rounded-left p-4">
                         <h1 class="text-center font-weight-bold text-primary ">Sign in</h1>
@@ -70,7 +70,7 @@
     <!-- register form start -->
     <div class="row justify-content-center wrapper" id="register-box">
             <div class="col-lg-10 mt-1 mb-auto">
-            <div class="text-center p-0 m-0"><img src="./images/company_profile.png" alt=""></div>
+            <div class="text-center p-0 m-0"><img src="../images/company_profile.png" alt=""></div>
                 <div class="card-group myShadow">
                 <div class="card justify-content-center rounded-left myColor p-4">
                       <h1 class="text-center font-weight-bold text-white">Welcome Back</h1>
@@ -153,7 +153,7 @@
     <!-- forgot password form start -->
     <div class="row justify-content-center wrapper" id="forgot-box"  >
         <div class="col-lg-10 mt-5 mb-auto">
-            <div class="text-center p-0 m-0"><img src="./images/company_profile.png" alt=""></div>
+            <div class="text-center p-0 m-0"><img src="../images/company_profile.png" alt=""></div>
                 <div class="card-group myShadow">
                   <div class="card justify-content-center rounded-left myColor p-4">
                       <h1 class="text-center font-weight-bold text-white">Reset Password</h1>

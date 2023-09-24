@@ -25,7 +25,7 @@ class Database{
 }
 
 
-$checkDatabaseIsConnect = new Database();
+// $checkDatabaseIsConnect = new Database();
 
 
 
