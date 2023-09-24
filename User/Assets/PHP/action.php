@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require_once 'user_db.php';
 
 $user = new UserDB;
