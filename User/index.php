@@ -212,6 +212,11 @@
           $("#login-box").show();
         });
 
+        //when forgot password was click
+        $("#forgot-link").click(function(){
+          $("#login-box").hide();
+          $("#forgot-box").show();
+        });
 
 
 
@@ -219,7 +224,8 @@
 
 
 
-        
+
+
     });
 
 
