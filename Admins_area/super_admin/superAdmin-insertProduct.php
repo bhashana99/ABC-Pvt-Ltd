@@ -23,7 +23,7 @@ if(isset($_POST['insert_product'])){
 
             echo "<script>
                 Swal.fire({
-                    title: 'Category Add Successfully',
+                    title: 'Product Add Successfully',
                     type: 'success'
                 });
                 document.getElementById('productAddForm').reset();
@@ -71,7 +71,7 @@ if(isset($_POST['insert_product'])){
         <div class="col-md-6">
             <div class="d-flex flex-column align-items-center justify-content-center h-100">
                 <div class="preview ">
-                    <img src="../../images/default.png" id="img" alt="Preview" style="max-width: 100%; max-height: 300px;">
+                    <img src="../../images/default.png" id="img" alt="Preview" style="max-width: 100%; max-height: 400px;">
                 </div>
             </div>
         </div>

@@ -69,8 +69,7 @@ $title = isset($titles[$currentFile]) ? $titles[$currentFile] : 'Default Title';
 <style media="screen">
     .preview{
       display: block;
-      width: 400px;
-      height: 400px;
+      
       border: none;
       margin-top: 10px;
     }
