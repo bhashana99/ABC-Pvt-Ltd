@@ -28,8 +28,8 @@
                       <form action="#" method="post" class="px-3" id="admin-login-form">
                         <div id="adminLoginAlert"></div>
                         <div class="form-group">
-                          <input type="text" name="username" class="form-control form-control-lg rounded-0"
-                          placeholder="Username" required autofocus>
+                          <input type="email" name="email" class="form-control form-control-lg rounded-0"
+                          placeholder="admin@mail.com" required autofocus>
                         </div>
 
                         <div class="form-group">

@@ -121,7 +121,7 @@ $title = isset($titles[$currentFile]) ? $titles[$currentFile] : 'Default Title';
 
                         <h4 class="text-light"><?= $title; ?></h4>
 
-                        <a href="assets/php/logout.php" class="text-light mt-1">
+                        <a href="logout.php" class="text-light mt-1">
                             <i class="fas fa-sign-out-alt"></i>&nbsp;Logout
                         </a>
                     </div>
