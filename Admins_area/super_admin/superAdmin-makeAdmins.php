@@ -38,6 +38,28 @@ require_once './superAdmin-header.php';
         </div>
 </div>
 
+<script>
+    $(document).ready(function(){
+
+        //Add new admin
+        $("#make_admin").click(function(e){
+            if($("#adminAddForm")[0].checkValidity()){
+                e.preventDefault();
+
+                $(this).val('Please Wait..');
+                $.ajax({
+                    url:'../assets/php/admin-action.php',
+                    method:'post',
+                    data:$("#adminAddForm").serialize()+'&action=newAdmin',
+                    success:function(response){
+                        console.log(response);
+                    }
+                });
+            }
+        });
+    });
+</script>
+
 </body>
 </html>
 
