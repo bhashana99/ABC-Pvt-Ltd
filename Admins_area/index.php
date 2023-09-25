@@ -69,7 +69,7 @@
           success:function(response){
           //  console.log(response);
           if(response === 'admin_login'){
-            window.location = 'admin-dashboard.php';
+            window.location = 'super_admin/superAdmin-dashboard.php';
           }
           else{
             $("#adminLoginAlert").html(response);
