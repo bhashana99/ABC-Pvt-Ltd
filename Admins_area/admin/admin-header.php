@@ -9,7 +9,7 @@ if(!isset($_SESSION['username'])){
 $titles = array(
     'admin-insertProduct.php' => 'Insert Product',
     'admin-productCustomize.php' => 'Product Customize',
-    'admin-users.php' => 'Users'
+    'admin-userDetails.php' => 'Users'
     
     
 );
@@ -91,8 +91,8 @@ $title = isset($titles[$currentFile]) ? $titles[$currentFile] : 'Default Title';
                     <i class="fa-solid fa-cart-plus"></i>&nbsp;&nbsp;Insert Product
                     </a>
 
-                    <a href="admin-users.php" class="list-group-item text-light admin-link
-                    <?= (basename($_SERVER['PHP_SELF']) == 'admin-users.php')? "nav-active":"" ?>">
+                    <a href="admin-userDetails.php" class="list-group-item text-light admin-link
+                    <?= (basename($_SERVER['PHP_SELF']) == 'admin-userDetails.php')? "nav-active":"" ?>">
                     <i class="fa-solid fa-users"></i>&nbsp;&nbsp;Users Details
                     </a>
 
