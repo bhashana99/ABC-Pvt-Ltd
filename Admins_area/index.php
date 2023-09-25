@@ -65,10 +65,10 @@
         $.ajax({
           url:'assets/php/admin-action.php',
           method:'post',
-          data: $("#admin-login-form").serialize()+'&action=adminLogin',
+          data: $("#admin-login-form").serialize()+'&action=superAdminLogin',
           success:function(response){
           //  console.log(response);
-          if(response === 'admin_login'){
+          if(response === 'superAdmin_login'){
             window.location = 'super_admin/superAdmin-productCustomize.php';
           }
           else{
