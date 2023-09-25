@@ -67,6 +67,7 @@ $title = isset($titles[$currentFile]) ? $titles[$currentFile] : 'Default Title';
     }
 </style>
 
+
 </head>
 <body>
 <div class="container-fluid">
