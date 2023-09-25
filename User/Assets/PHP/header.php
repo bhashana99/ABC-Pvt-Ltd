@@ -40,7 +40,7 @@ require_once 'session.php';
       </li>
       <li class="nav-item dropdown mr-3 ml-3">
         <a href="#" class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown" >
-            <i class="fas fa-user-cog"></i>&nbsp;Hi! UserName
+            <i class="fas fa-user-cog"></i>&nbsp;Hi! <?= $fname ?>
         </a>
         <div class="dropdown-menu ">
             <a href="" class="dropdown-item"><i class="fas fa-cog"></i>&nbsp;Setting</a>
