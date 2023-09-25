@@ -31,3 +31,16 @@ require_once './superAdmin-header.php';
        
     </div>
 </div>
+
+
+<!-- footer area -->
+</div>
+        </div>
+</div>
+
+</body>
+</html>
+
+
+
+
