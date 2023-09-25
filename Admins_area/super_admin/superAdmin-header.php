@@ -9,7 +9,7 @@ if(!isset($_SESSION['username'])){
 $titles = array(
     'superAdmin-insertProduct.php' => 'Insert Product',
     'superAdmin-productCustomize.php' => 'Product Customize',
-    'superAdmin-admins.php' => 'Admins',
+    'superAdmin-admins.php' => 'Customize Admins',
     'superAdmin-users.php' => 'Users',
     'superAdmin-blockUsers.php' => 'Blocked Users',
     'superAdmin-blockAdmins.php' => 'Blocked Admin',

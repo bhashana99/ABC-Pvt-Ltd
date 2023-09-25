@@ -109,6 +109,7 @@ if(isset($_POST['pDel_id'])){
     $admin->delete_product($id);
 }
 
+//Handle add new admin ajax request
 if(isset($_POST['action']) && $_POST['action'] == 'newAdmin'){
     // print_r($_POST);
     $name = $admin->test_input($_POST['admin_name']);
@@ -127,6 +128,81 @@ if(isset($_POST['action']) && $_POST['action'] == 'newAdmin'){
         echo $admin->showMessage('danger', "This $email already exists! Try another E-Mail");
     }
 
+}
+
+//Handle Fetch all admins Ajax Request
+if(isset($_POST['action']) && $_POST['action'] == 'fetchAllAdmin'){
+    $output = '';
+    $data = $admin->fetchAll_admins();
+    
+    if($data){
+        $output .= '<table class="table table-striped table-bordered text-center">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>E-Mail</th>
+                <th>Phone Number</th>
+                <th>Action</th>    
+            </tr>
+        </thead>
+                <tbody>';
+                foreach($data as $admin){
+
+                    $output .= '<tr>
+                                    <td>'.$admin['id'].'</td>
+                                    <td>'.$admin['name'].'</td>
+                                    <td>'.$admin['email'].'</td>
+                                    <td>'.$admin['phone'].'</td>
+                                    <td>
+                                    <a href="#" id="'.$admin['id'].'" title="Edit Admin details" 
+                                     class="text-primary adminEditIcon" data-toggle="modal" data-target="#editAdminModal" >
+                                     <i class="fa-solid fa-pen-to-square"></i></a>&nbsp;&nbsp;
+                                
+                                    <a href="#" id="'.$admin['id'].'" title="Delete Admin" class="text-danger deleteAdminIcon" >
+                                    <i class="fa-regular fa-trash-can"></i></a>&nbsp;&nbsp;
+                                 </td>
+                                </tr>';
+                    
+                    
+                }
+                $output .= '</tbody>
+                </table>';
+                        
+                echo $output;            
+    } else{
+        echo '<h3 class="text-center text-secondary">:( You have not admins yet!';
+      }
+}
+
+
+//handle admin details edit ajax request
+if(isset($_POST['pEdit_id'])){
+    //print_r($_POST);
+    $eid = $_POST['pEdit_id'];
+    //print_r($id);
+    $row = $admin->getAdminDetails($eid);
+    // print_r($row);
+    echo json_encode($row);
+
+}
+
+//handle update admin details
+if(isset($_POST['action']) && $_POST['action'] == 'update_admin'){
+    // print_r($_POST);
+    $id = $_POST['id'];
+    $name = $admin->test_input($_POST['name']);
+    $phone = $admin->test_input($_POST['phone']);
+   
+    $admin->updateAdmin($id,$name,$phone);    
+}
+
+//Handle delete product ajax request
+if(isset($_POST['pDel_id'])){
+    $id = $admin->test_input($_POST['pDel_id']);
+    // print_r($_POST['pDel_id']);
+    // print_r($id);
+    $admin->delete_admin($id);
 }
 
 

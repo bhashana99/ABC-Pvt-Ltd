@@ -88,9 +88,43 @@ class Admin extends Database{
         return true;
        }
 
+        //fetch all admins
+        public function fetchAll_admins(){
+        $sql = "SELECT * FROM admin";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute();
+        $row = $stmt->fetchAll(PDO::FETCH_ASSOC);
+  
+        return $row;
+       }
+
+        //fetchAll admin details
+        public function getAdminDetails($id){
+            $sql = "SELECT * FROM admin WHERE id=:id";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute(['id'=>$id]);
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+      
+            return $row;
+           }
+      
+           //Update admin details
+           public function updateAdmin($id,$name,$phone){
+            $sql = "UPDATE admin SET name=:name, phone=:phone WHERE id=:id";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute(['id'=>$id,'name'=>$name, 'phone'=>$phone]);
+            return true;
+           }
+      
+           //delete admin
+           public function delete_admin($id){
+            $sql = "DELETE FROM admin WHERE id=:id";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute(['id' => $id]);
+      
+            return true;
+           }
 
 
 
-
-       
 }

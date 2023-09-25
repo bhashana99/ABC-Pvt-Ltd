@@ -6,12 +6,12 @@ require_once './superAdmin-header.php';
 
 <div class="container mt-5 mx-auto">
     <div class="row">
-        <div class="col-md-6">
+        <div class="mx-auto col-lg-6">
             <h2>Add New Admin</h2>
             <form action="#" id="adminAddForm" method="post" class="mt-4">
                 <div class="form-group">
                     <label for="admin_name">Name</label>
-                    <input type="text" class="form-control" name="admin_name" id="admin_name" placeholder="Enter admin name" autofocus required autocomplete="off">
+                    <input type="text" class="form-control " name="admin_name" id="admin_name" placeholder="Enter admin name" autofocus required autocomplete="off">
                 </div>
                 <div class="form-group">
                     <label for="admin_email">E-Mail</label>
