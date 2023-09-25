@@ -30,13 +30,13 @@ require_once 'session.php';
   <div class="collapse navbar-collapse" id="collapsibleNavbar">
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
-        <a class="nav-link active"  href="./home.php"><i class="fas fa-home"></i>&nbsp;Home</a>
+        <a class="nav-link <?= (basename($_SERVER['PHP_SELF']) == "home.php")?"active":""; ?> "  href="./home.php"><i class="fas fa-home"></i>&nbsp;Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="./checkout.php">Checkout</a>
+        <a class="nav-link <?= (basename($_SERVER['PHP_SELF']) == "checkout.php")?"active":""; ?> " href="./checkout.php">Checkout</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="./cart.php"><i class="fas fa-shopping-cart"></i> <span class="badge badge-danger" id="cart-item">2</span></a>
+        <a class="nav-link <?= (basename($_SERVER['PHP_SELF']) == "cart.php")?"active":""; ?> " href="./cart.php"><i class="fas fa-shopping-cart"></i> <span class="badge badge-danger" id="cart-item">2</span></a>
       </li>
       <li class="nav-item dropdown mr-3 ml-3">
         <a href="#" class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown" >
