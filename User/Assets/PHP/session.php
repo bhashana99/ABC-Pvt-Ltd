@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-require_once 'auth.php';
+require_once 'user_db.php';
 
 // cuser= Current User
 $cuser = new UserDB();
