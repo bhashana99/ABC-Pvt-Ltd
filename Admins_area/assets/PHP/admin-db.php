@@ -70,4 +70,27 @@ class Admin extends Database{
         return true;
        }
 
+       //check admin
+       public function check_admin($email){
+        $sql = "SELECT * FROM admin WHERE email=:email";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute(['email'=>$email]);
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $row;
+       }
+
+       //create admin
+       public function createNew_admin($name,$email,$password,$phone){
+        $sql = "INSERT INTO admin(name,email,password,phone) VALUES (:name,:email,:password,:phone)";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute(['name'=>$name,'email'=>$email,'password'=>$password,'phone'=>$phone]);
+        return true;
+       }
+
+
+
+
+
+       
 }

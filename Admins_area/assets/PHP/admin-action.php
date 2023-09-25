@@ -109,7 +109,25 @@ if(isset($_POST['pDel_id'])){
     $admin->delete_product($id);
 }
 
+if(isset($_POST['action']) && $_POST['action'] == 'newAdmin'){
+    // print_r($_POST);
+    $name = $admin->test_input($_POST['admin_name']);
+    $email = $admin->test_input($_POST['admin_email']);
+    $phone = $admin->test_input($_POST['admin_phone']);
+    $password = $admin->test_input($_POST['admin_password']);
+    $status = false;
+    $hidePassword = sha1($password); 
 
+    $isAdmin = $admin->check_admin($email);
+
+    if($isAdmin == null){
+        $admin->createNew_admin($name,$email,$hidePassword,$phone);
+        echo 'newAdmin_here';
+    }else{
+        echo $admin->showMessage('danger', "This $email already exists! Try another E-Mail");
+    }
+
+}
 
 
 ?>
