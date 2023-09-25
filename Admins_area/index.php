@@ -71,7 +71,7 @@
           if(response === 'superAdmin_login'){
             window.location = 'super_admin/superAdmin-productCustomize.php';
           }else if(response == 'admin_login'){
-            window.location = 'admin/index.php';
+            window.location = 'admin/admin-insertProduct.php';
           }
           else{
             $("#adminLoginAlert").html(response);
