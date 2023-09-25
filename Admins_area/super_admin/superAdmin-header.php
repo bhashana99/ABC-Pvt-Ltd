@@ -78,37 +78,37 @@ $title = isset($titles[$currentFile]) ? $titles[$currentFile] : 'Default Title';
 
                     <a href="superAdmin-productCustomize.php" class="list-group-item text-light admin-link
                     <?= (basename($_SERVER['PHP_SELF']) == 'superAdmin-productCustomize.php')? "nav-active":"" ?>">
-                    <i class="fa-solid fa-truck"></i>&nbsp;&nbsp;Available products
+                    <i class="fa-solid fa-wrench"></i>&nbsp;&nbsp;Available products
                     </a>
 
                     <a href="superAdmin-insertProduct.php" class="list-group-item text-light admin-link
                     <?= (basename($_SERVER['PHP_SELF']) == 'superAdmin-insertProduct.php')? "nav-active":"" ?>">
-                    <i class="fa-regular fa-credit-card"></i>&nbsp;&nbsp;Insert Product
+                    <i class="fa-solid fa-cart-plus"></i>&nbsp;&nbsp;Insert Product
                     </a>
 
                     <a href="superAdmin-makeAdmins.php" class="list-group-item text-light admin-link
                     <?= (basename($_SERVER['PHP_SELF']) == 'superAdmin-makeAdmins.php')? "nav-active":"" ?>">
-                        <i class="fas fa-bell"></i>&nbsp;&nbsp;Make Admin
+                    <i class="fa-solid fa-person-walking-arrow-right"></i>&nbsp;&nbsp;Make Admin
                     </a>
                     
                     <a href="superAdmin-admins.php" class="list-group-item text-light admin-link
                     <?= (basename($_SERVER['PHP_SELF']) == 'superAdmin-admins.php')? "nav-active":"" ?>">
-                        <i class="fas fa-bell"></i>&nbsp;&nbsp;Admins Details
+                    <i class="fa-solid fa-user-shield"></i>&nbsp;&nbsp;Admins Details
                     </a>
 
                     <a href="superAdmin-users.php" class="list-group-item text-light admin-link
                     <?= (basename($_SERVER['PHP_SELF']) == 'superAdmin-users.php')? "nav-active":"" ?>">
-                    <i class="fa-solid fa-cart-plus"></i>&nbsp;&nbsp;Users Details
+                    <i class="fa-solid fa-users"></i>&nbsp;&nbsp;Users Details
                     </a>
 
                     <a href="SuperAdmin-blockUsers.php" class="list-group-item text-light admin-link
                     <?= (basename($_SERVER['PHP_SELF']) == 'SuperAdmin-blockUsers.php')? "nav-active":"" ?>">
-                    <i class="fa-solid fa-wrench"></i>&nbsp;&nbsp;Blocked Users
+                    <i class="fa-solid fa-users-slash"></i>&nbsp;&nbsp;Blocked Users
                     </a>
 
                     <a href="superAdmin-blockAdmins.php" class="list-group-item text-light admin-link
                     <?= (basename($_SERVER['PHP_SELF']) == 'superAdmin-blockAdmins.php')? "nav-active":"" ?>">
-                    <i class="fa-solid fa-plus-minus"></i>&nbsp;&nbsp;Blocked Admins
+                    <i class="fa-solid fa-user-slash"></i>&nbsp;&nbsp;Blocked Admins
                     </a>
                
                 </div>
