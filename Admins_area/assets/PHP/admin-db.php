@@ -14,6 +14,16 @@ class Admin extends Database{
 
         return $row;
     }
+    // Admin Login
+    public function admin_login($email,$password){
+        $sql = "SELECT email, password FROM admin WHERE email = :email AND password = :password ";
+
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute(['email'=>$email, 'password'=>$password]);
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $row;
+    }
 
      //Check  product
      public function check_product($product_title){

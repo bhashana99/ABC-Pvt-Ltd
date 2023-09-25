@@ -13,14 +13,20 @@ if(isset($_POST['action']) && $_POST['action'] == 'superAdminLogin'){
 
     $hpassword = sha1($password);
 
-    $loggedInAdmin = $admin->superAdmin_login($email,$hpassword);
-
-    if($loggedInAdmin != null){
+    $loggedInSuperAdmin = $admin->superAdmin_login($email,$hpassword);
+    $loggedInAdmin = $admin->admin_login($email,$hpassword);
+    
+    if($loggedInSuperAdmin != null){
         echo 'superAdmin_login';
+        $_SESSION['email'] = '$email';
+    }else if($loggedInAdmin != null){
+        echo 'admin_login';
         $_SESSION['email'] = '$email';
     }
     else{
+        
         echo $admin->showMessage('danger','Username or Password is Incorrect!');
+        echo $admin->showMessage('warning','Get More Help->Contact Super Admin');
     }
 }
 
