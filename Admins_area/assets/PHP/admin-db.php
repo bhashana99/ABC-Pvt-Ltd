@@ -33,4 +33,41 @@ class Admin extends Database{
         return true;
        }
 
+        //fetch all products
+     public function fetchAll_products(){
+        $sql = "SELECT * FROM products";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute();
+        $row = $stmt->fetchAll(PDO::FETCH_ASSOC);
+  
+        return $row;
+       }
+  
+       //fetchAll Product details
+       public function getProductDetails($id){
+        $sql = "SELECT * FROM products WHERE id=:id";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute(['id'=>$id]);
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+  
+        return $row;
+       }
+  
+       //Update Product details
+       public function updateProduct($id,$title,$desc,$price){
+        $sql = "UPDATE products SET title=:title, description=:desc, price=:price WHERE id=:id";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute(['id'=>$id,'title'=>$title, 'desc'=>$desc, 'price'=>$price]);
+        return true;
+       }
+  
+       //delete product
+       public function delete_product($id){
+        $sql = "DELETE FROM products WHERE id=:id";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute(['id' => $id]);
+  
+        return true;
+       }
+
 }
