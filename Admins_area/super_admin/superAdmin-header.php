@@ -11,8 +11,6 @@ $titles = array(
     'superAdmin-productCustomize.php' => 'Product Customize',
     'superAdmin-admins.php' => 'Customize Admins',
     'superAdmin-users.php' => 'Users',
-    'superAdmin-blockUsers.php' => 'Blocked Users',
-    'superAdmin-blockAdmins.php' => 'Blocked Admin',
     'superAdmin-makeAdmins.php' => 'Make Admin',
     
 );
@@ -109,15 +107,6 @@ $title = isset($titles[$currentFile]) ? $titles[$currentFile] : 'Default Title';
                     <i class="fa-solid fa-users"></i>&nbsp;&nbsp;Users Details
                     </a>
 
-                    <a href="SuperAdmin-blockUsers.php" class="list-group-item text-light admin-link
-                    <?= (basename($_SERVER['PHP_SELF']) == 'SuperAdmin-blockUsers.php')? "nav-active":"" ?>">
-                    <i class="fa-solid fa-users-slash"></i>&nbsp;&nbsp;Blocked Users
-                    </a>
-
-                    <a href="superAdmin-blockAdmins.php" class="list-group-item text-light admin-link
-                    <?= (basename($_SERVER['PHP_SELF']) == 'superAdmin-blockAdmins.php')? "nav-active":"" ?>">
-                    <i class="fa-solid fa-user-slash"></i>&nbsp;&nbsp;Blocked Admins
-                    </a>
                
                 </div>
             </div>
