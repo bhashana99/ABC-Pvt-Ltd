@@ -13,6 +13,7 @@ $titles = array(
     'superAdmin-users.php' => 'Users',
     'superAdmin-blockUsers.php' => 'Blocked Users',
     'superAdmin-blockAdmins.php' => 'Blocked Admin',
+    'superAdmin-makeAdmins.php' => 'Make Admin',
     
 );
 
@@ -71,7 +72,7 @@ $title = isset($titles[$currentFile]) ? $titles[$currentFile] : 'Default Title';
 <div class="container-fluid">
         <div class="row">
             <div class="admin-nav p-0">
-                <h4 class="text-light text-center p-2">Admin panel</h4>
+                <h4 class="text-light text-center p-2">Super Admin panel</h4>
 
                 <div class="list-group list-group-flush">
 
@@ -85,8 +86,11 @@ $title = isset($titles[$currentFile]) ? $titles[$currentFile] : 'Default Title';
                     <i class="fa-regular fa-credit-card"></i>&nbsp;&nbsp;Insert Product
                     </a>
 
+                    <a href="superAdmin-makeAdmins.php" class="list-group-item text-light admin-link
+                    <?= (basename($_SERVER['PHP_SELF']) == 'superAdmin-makeAdmins.php')? "nav-active":"" ?>">
+                        <i class="fas fa-bell"></i>&nbsp;&nbsp;Make Admin
+                    </a>
                     
-
                     <a href="superAdmin-admins.php" class="list-group-item text-light admin-link
                     <?= (basename($_SERVER['PHP_SELF']) == 'superAdmin-admins.php')? "nav-active":"" ?>">
                         <i class="fas fa-bell"></i>&nbsp;&nbsp;Admins Details
