@@ -7,10 +7,10 @@ require_once 'Assets/PHP/header.php';
 
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-lg-10">
+        <div class="col-lg-11">
           <div id="alert"></div>
             <div class="table-responsive mt-2" id="showItem">
-                <table class="table table-bordered table-striped text-center">
+                <!-- <table class="table table-bordered table-striped text-center">
                     <thead>
                         <tr>
                             <td colspan="7">
@@ -63,7 +63,7 @@ require_once 'Assets/PHP/header.php';
                         </tr>
                     </tbody>
                     
-                </table>
+                </table> -->
             </div>
         </div>
     </div>
@@ -96,7 +96,8 @@ $(document).ready(function(){
                 method: 'post',
                 data: {action:'displayItem'},
                 success:function(response){
-                    console.log(response);
+                    // console.log(response);
+                    $("#showItem").html(response);
                 }
 
             });
