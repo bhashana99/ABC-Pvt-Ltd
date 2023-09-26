@@ -116,7 +116,11 @@ $(document).ready(function(){
                 url: 'Assets/PHP/action.php',
                 method:'post',
                 cache:false,
-                data:{qty:qty,pid:pid,pprice:pprice},
+                data:{
+                    action:'change_qty',
+                    qty:qty,
+                    pid:pid,
+                    pprice:pprice},
                 success:function(response){
                     console.log(response);       
                 }
