@@ -304,8 +304,8 @@ if($data){
                                 <h5><b>Total Amount Payable : </b><span id="total">'.number_format($grandTotal,2).'</span>/-</h5>
                             </div>
                             <form action="" method="post" id="placeOrder">
-                                <input type="hidden" name="products" value="">
-                                <input type="hidden" name="grand_total" value="">
+                                <input type="hidden" name="products" id="pnames" value="'.$allItems.'">
+                                <input type="hidden" name="grand_total" id="ototal" value="'.$grandTotal.'">
                                 <div class="form-group">
                                     <input type="text" name="name" class="form-control" placeholder="Enter Name" required>
                                 </div>
@@ -313,7 +313,7 @@ if($data){
                                     <input type="email" name="email" class="form-control" placeholder="Enter E-Mail" required>
                                 </div>
                                 <div class="form-group">
-                                    <input type="tel" name="phone" class="form-control" placeholder="Enter Phone number" required>
+                                    <input type="tel" name="phone" pattern="^\+94\d{9}$" class="form-control" placeholder="+94xxxxxxxxx" required>
                                 </div>
                                 <div class="form-group">
                                     <textarea name="address" class="form-control" cols="30" rows="8" placeholder="Enter Delivery Address Here..."></textarea>
@@ -328,7 +328,7 @@ if($data){
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <input type="submit" name="submit" value="Place Order" class="btn btn-danger btn-block">
+                                    <input type="submit" name="submit" value="Place Order" class="btn btn-danger btn-block submit">
                                 </div>
                             </form>
                         </div>
@@ -345,10 +345,39 @@ if($data){
 
 }
 
+}
+
+//Handle delivery ajax request
+if(isset($_POST['action']) && $_POST['action'] == 'check_out'){
+    // print_r($_POST);
+    $products = $_POST['products'];
+    $grandTotal = $_POST['grand_total'];
+    $name = $_POST['name'];
+    $email = $_POST['email']; 
+    $phone = $_POST['phone']; 
+    $address = $_POST['address']; 
+    $pmode = $_POST['pmode'];
+
+    $user->insertOrder($cid,$name,$email,$phone,$address,$pmode,$products,$grandTotal);
+    $user->deleteAllItem($cid);
+
+    $data = '.<div class="text-center">
+    <h1 class="display-4 mt-2 text-danger">Thank You!</h1>
+    <h2 class="text-success">Your Order Placed Successfully!</h2>
+    <h4 class="bg-danger text-light rounded p-2">Item Purchased: '.$products.' </h4>
+    <h4>Your Name : '.$name.'</h4>
+    <h4>Your E-Mail : '.$email.'</h4>
+    <h4>Your Phone : '.$phone.'</h4>
+    <h4>Total Amount Paid : '.number_format($grandTotal,2).'</h4>
+    <h4>Payment Mode : '.$pmode.'</h4>
+ </div>.';
+ echo $data;
+
+
+
 
 
 }
-
 
 
 

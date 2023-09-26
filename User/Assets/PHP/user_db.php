@@ -159,6 +159,15 @@ class UserDB extends Database{
         return $row;
     }
 
+    //insert order
+    public function insertOrder($cid,$name,$email,$phone,$address,$pmode,$products,$amount_paid){
+        $sql = "INSERT INTO orders (user_id,name,email,phone,address,pmode,products,amount_paid) VALUES (:cid,:name,:email,:phone,:address,:pmode,:products,:amount_paid)";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute(['cid'=>$cid,'name'=>$name,'email'=>$email,'phone'=>$phone,'address'=>$address,'pmode'=>$pmode,'products'=>$products,'amount_paid'=>$amount_paid]);
+        return true;
+
+    }
+
 }
 
 

@@ -80,6 +80,45 @@ require_once 'Assets/PHP/header.php';
             });
         }
 
+        //delivery ajax request
+        $("body").on('click','.submit',function(e){
+            if($("#placeOrder")[0].checkValidity()){
+                e.preventDefault();
+
+                var $form = $(this).closest("#placeOrder");
+                // console.log($form);
+                // var products = $form.find("#pnames").val();
+                // var grantTotal = $form.find("#ototal").val();
+                
+                // console.log(products,grantTotal);
+                $.ajax({
+                    url: 'Assets/PHP/action.php',
+                    method:'post',
+                    cache:false,
+                    data: $form.serialize() + "&action=check_out",
+                    success:function(response){
+                        // console.log(response);
+                        $("#checkoutTemplate").html(response);
+                        load_cart_item_number();
+                    }
+                    });
+
+            }
+        });
+
+        load_cart_item_number();
+        //show cart number ajax request
+        function load_cart_item_number(){
+            $.ajax({
+                url:'Assets/PHP/action.php',
+                method: 'get',
+                data: {cartItem:"cart_item"},
+                success:function(response){
+                    $("#cart-item").html(response);
+                }
+            });
+        }
+
     });
 </script>
 
