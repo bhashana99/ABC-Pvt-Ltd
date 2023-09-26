@@ -122,9 +122,42 @@ if(isset($_POST['action']) && $_POST['action'] == 'login'){
 }
 
 
-//Display product
-if(isset($_SESSION['user'])){
-    
+//Handle sent data to cart ajax request
+if(isset($_POST['pid'])){
+    $pid = $_POST['pid'];
+    $pname = $_POST['pname'];
+    $pprice = $_POST['pprice'];
+    $pimage = $_POST['pimage'];
+    $pdescription = $_POST['pdescription'];
+    $pqty = 1;
+    $total = $pprice * $pqty;
+
+    $isInCart = $user->checkCart($pid);
+
+    if($isInCart == null){
+        $user->insertCart($pname,$pprice,$pimage,$pqty,$total);
+
+        echo '<div class="alert alert-success alert-dismissible mt-2">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong>Item added to your cart!</strong> 
+            </div>';
+
+    }else{
+
+        echo '<div class="alert alert-danger alert-dismissible mt-2">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong>Item already added to your cart!</strong> 
+            </div>';
+    }
+
+ 
+}
+
+//Handle cart number ajax request
+if(isset($_GET['cartItem']) && isset($_GET['cartItem']) == 'cart_item'){
+    $itemCount = $user->numberOfItem();
+
+    echo $itemCount;
 }
 
 

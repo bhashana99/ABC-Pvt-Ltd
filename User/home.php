@@ -44,6 +44,46 @@ $user = new UserDB();
 
 
 <script>
+$(document).ready(function(){
+        //sent data for cart Ajax request
+        $(".addItemBtn").click(function(e){
+            e.preventDefault();
+
+            var $form = $(this).closest(".form-submit");
+            var pid = $form.find(".pid").val();
+            var pname = $form.find(".pname").val();
+            var pprice = $form.find(".pprice").val();
+            var pimage = $form.find(".pimage").val();
+            var pdescription = $form.find(".pdescription").val();
+
+            $.ajax({
+                url:'Assets/PHP/action.php',
+                method:'post',
+                data:{pid:pid,pname:pname,pprice:pprice,pimage:pimage,pdescription:pdescription},
+                success:function(response){
+                    $("#message").html(response);
+                    window.scrollTo(0,0);
+                    load_cart_item_number();
+                }
+            });
+
+        });
+
+        load_cart_item_number();
+        //show cart number ajax request
+        function load_cart_item_number(){
+            $.ajax({
+                url:'Assets/PHP/action.php',
+                method: 'get',
+                data: {cartItem:"cart_item"},
+                success:function(response){
+                    $("#cart-item").html(response);
+                }
+            });
+        }
+
+    });
+
 
 </script>
 

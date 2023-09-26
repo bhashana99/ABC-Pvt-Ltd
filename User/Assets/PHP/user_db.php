@@ -87,8 +87,34 @@ class UserDB extends Database{
     }
 
 
+    //check cart
+    public function checkCart($id){
+        $sql = "SELECT id FROM cart WHERE id = :id";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute(['id'=>$id]);
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
+        return $row;
+    }
 
+    //insert Cart product
+    public function insertCart($name,$price,$image,$qty,$total_price){
+        $sql = "INSERT INTO cart (product_name,product_price,product_image,qty,total_price) VALUES(:name,:price,:image,:qty,:total)";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute(['name'=>$name,'price'=>$price,'image'=>$image,'qty'=>$qty,'total'=>$total_price]);
+        
+        return true;
+    }
+
+    //cart number of item
+    public function numberOfItem(){
+        $sql = "SELECT * FROM cart";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute();
+        $count = $stmt->rowCount();
+
+        return $count;
+    }
 
 
 
