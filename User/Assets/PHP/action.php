@@ -221,7 +221,7 @@ if(isset($_POST['action']) && $_POST['action'] == 'displayItem'){
                         }
                         $output .= '<tr>
                                         <td colspan="3">
-                                        <a href="index.php" class="btn btn-success"><i class="fas fa-cart-plus"></i>&nbsp;&nbsp;Continue Shopping</a>
+                                        <a href="home.php" class="btn btn-success"><i class="fas fa-cart-plus"></i>&nbsp;&nbsp;Continue Shopping</a>
                                         </td>
                                         <td colspan="2"><b>Grand Total</b></td>
                                         <td><b><i class="fa-solid fa-rupee"></i>&nbsp;&nbsp;'.number_format($grandTotal,2).'</b></td>
