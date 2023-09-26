@@ -68,3 +68,31 @@ require_once 'Assets/PHP/header.php';
         </div>
     </div>
 </div>
+
+<script>
+
+$(document).ready(function(){
+
+    
+    load_cart_item_number();
+        //show cart number ajax request
+        function load_cart_item_number(){
+            $.ajax({
+                url:'Assets/PHP/action.php',
+                method: 'get',
+                data: {cartItem:"cart_item"},
+                success:function(response){
+                    $("#cart-item").html(response);
+                }
+            });
+        }
+
+
+
+
+});
+</script>
+
+
+</body>
+</html>
