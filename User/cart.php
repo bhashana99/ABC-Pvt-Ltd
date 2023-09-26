@@ -129,6 +129,7 @@ $(document).ready(function(){
        
                 }
         });
+        });
 
         //delete all item in cart
         $("body").on('click','.itemRemove',function(e){
@@ -147,8 +148,6 @@ $(document).ready(function(){
                     console.log(response);
                 }
             });
-        });
-
         });
 
 
