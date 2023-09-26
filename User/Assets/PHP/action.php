@@ -186,8 +186,10 @@ if(isset($_POST['action']) && $_POST['action'] == 'displayItem'){
                                 <th>Quantity</th>
                                 <th>Total Price</th>
                                 <th>
-                                    <a href="#" id="clearCart" class="badge-danger badge p-1" ><i class="fas fa-trash"></i>&nbsp;&nbsp;Clear Cart</a>
-                                </th>
+                                <a href="#" class="clearCart badge-danger badge p-1">
+                                    <i class="fas fa-trash"></i>&nbsp;&nbsp;Clear Cart
+                                </a>
+                            </th>
                             </tr>
                         </thead>
                         <tbody>';
@@ -213,7 +215,7 @@ if(isset($_POST['action']) && $_POST['action'] == 'displayItem'){
                                             <td><input type="number" class="form-control itemQty"   value="'.$item['qty'].'" style="width:75px;" min="1"></td>
 
                                             <td><i class="fa-solid fa-rupee"></i>&nbsp;&nbsp; '.number_format($totalPrice,2).' </td>
-                                            <td><a href="#" class="text-danger lead" id="itemRemove"><i class="fas fa-trash-alt"></i></a></td>
+                                            <td><a href="#" class="text-danger lead itemRemove" data-id="'.$item['id'].'"><i class="fas fa-trash-alt"></i></a></td>
                         
                                         </tr>';
                         }
@@ -257,5 +259,12 @@ if(isset($_POST['action']) && $_POST['action'] == 'change_qty'){
 
 }
 
+//Handle delete all item in cart
+if(isset($_POST['action']) && $_POST['action'] == 'delete_item'){
+    
+    // print_r($_POST);
+    $pid = $_POST['pid'];
+     echo 'Item removed successfully';
+}
 
 ?>

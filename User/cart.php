@@ -112,7 +112,7 @@ $(document).ready(function(){
 
             // console.log(pid,pprice,qty);
            
-            location.reload(true);
+            // location.reload(true);
             $.ajax({
                 url: 'Assets/PHP/action.php',
                 method:'post',
@@ -123,14 +123,31 @@ $(document).ready(function(){
                     pid:pid,
                     pprice:pprice},
                 success:function(response){
-                    console.log(response);
+                    // console.log(response);
                     // location.reload(true);
                     
        
                 }
         });
 
-
+        //delete all item in cart
+        $("body").on('click','.itemRemove',function(e){
+            e.preventDefault();
+            var pid = $(this).data('id');
+            
+            $.ajax({
+                url: 'Assets/PHP/action.php',
+                method:'post',
+                cache:false,
+                data:{
+                    action:'delete_item',
+                    pid : pid
+                },
+                success:function(response){
+                    console.log(response);
+                }
+            });
+        });
 
         });
 
