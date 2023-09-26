@@ -122,4 +122,10 @@ if(isset($_POST['action']) && $_POST['action'] == 'login'){
 }
 
 
+//Display product
+if(isset($_SESSION['user'])){
+    
+}
+
+
 ?>

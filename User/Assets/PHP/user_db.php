@@ -76,6 +76,16 @@ class UserDB extends Database{
 
     }
 
+    //fetch all product data
+    public function displayProduct(){
+        $sql="SELECT * FROM products";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $result;
+    }
+
 
 
 
