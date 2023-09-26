@@ -150,6 +150,15 @@ class UserDB extends Database{
         return true;
     }
 
+    //checkout details
+    public function summaryCart($cid){
+        $sql = "SELECT CONCAT(product_name, '(',qty,')') AS ItemQty,total_price FROM cart WHERE user_id=:cid";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute(['cid'=>$cid]);
+        $row = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $row;
+    }
+
 }
 
 

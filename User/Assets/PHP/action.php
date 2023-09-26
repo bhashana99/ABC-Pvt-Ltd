@@ -236,8 +236,9 @@ if(isset($_POST['action']) && $_POST['action'] == 'displayItem'){
                             // echo 'Formatted Total Price: ' . number_format($totalPrice, 2);
 
     }else{
-        echo '<h3 class="text-center text-secondary mt-5">:(  You have not added  any item yet! add your first item now!';
-
+        echo '<div class="text-center "><h3 class="text-center text-secondary mt-5">:( <br><br> You have not added  any item yet! <br>add your first item now!</h3>
+    <a href="home.php" class="btn btn-success mt-3"><i class="fas fa-cart-plus"></i>&nbsp;&nbsp;Continue Shopping</a></div>
+    ';
     }
 
 }
@@ -273,4 +274,82 @@ if(isset($_POST['action']) && $_POST['action'] == 'deleteAll_item'){
     // print_r($_POST);
     $user->deleteAllItem($cid);
 }
+
+//Handle show checkout details
+if(isset($_POST['action']) && $_POST['action'] == 'checkout'){
+// print_r($_POST);
+$output = '';
+$data = $user->summaryCart($cid);
+//  print_r($data);
+ $grandTotal = 0;
+ $items=[];
+
+if($data){
+
+
+    foreach($data as $item){
+        $grandTotal += $item['total_price'];
+        $items[] = $item['ItemQty'];
+    }
+
+    $allItems = implode(", ",$items);
+
+    $output .= '
+                    <div class="row justify-content-center">
+                        <div class="col-lg-6 px-4 pb-4" id="order">
+                            <h4 class="text-center text-info p-2">Complete your order!</h4>
+                            <div class="jumbotron p-3 mb-2 text-center">
+                                <h6 class="lead"><b>Product(s) : </b><span id="allProducts">'.$allItems.'</span></h6>
+                                <h6 class="lead"><b>Delivery Charge : </b>Free</h6>
+                                <h5><b>Total Amount Payable : </b><span id="total">'.number_format($grandTotal,2).'</span>/-</h5>
+                            </div>
+                            <form action="" method="post" id="placeOrder">
+                                <input type="hidden" name="products" value="">
+                                <input type="hidden" name="grand_total" value="">
+                                <div class="form-group">
+                                    <input type="text" name="name" class="form-control" placeholder="Enter Name" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" name="email" class="form-control" placeholder="Enter E-Mail" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="tel" name="phone" class="form-control" placeholder="Enter Phone number" required>
+                                </div>
+                                <div class="form-group">
+                                    <textarea name="address" class="form-control" cols="30" rows="8" placeholder="Enter Delivery Address Here..."></textarea>
+                                </div>
+                                <h6 class="text-center lead">Select Payment Mode</h6>
+                                <div class="form-group">
+                                    <select name="pmode" class="form-control">
+                                        <option value="" selected disabled>Cash On Delivery</option>
+                                        <option value="cod">Cash On Delivery</option>
+                                        <option value="netBanking">Net Banking</option>
+                                        <option value="cards">Debit/Credit Card</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <input type="submit" name="submit" value="Place Order" class="btn btn-danger btn-block">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                        
+                ';
+
+                echo $output;
+
+}else{
+    echo '<div class="text-center "><h3 class="text-center text-secondary mt-5">:( <br><br> You have not added  any item yet! <br>add your first item now!</h3>
+    <a href="home.php" class="btn btn-success mt-3"><i class="fas fa-cart-plus"></i>&nbsp;&nbsp;Continue Shopping</a></div>
+    ';
+
+}
+
+
+
+}
+
+
+
+
 ?>
