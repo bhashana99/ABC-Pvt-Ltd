@@ -1,5 +1,6 @@
 <?php
-session_start();
+ require_once './session.php';
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
@@ -131,11 +132,11 @@ if(isset($_POST['pid'])){
     $pdescription = $_POST['pdescription'];
     $pqty = 1;
     $total = $pprice * $pqty;
-
+    $currentUserId = $cid;
     $isInCart = $user->checkCart($pid);
 
     if($isInCart == null){
-        $user->insertCart($pname,$pprice,$pimage,$pqty,$total);
+        $user->insertCart($currentUserId,$pname,$pprice,$pimage,$pqty,$total);
 
         echo '<div class="alert alert-success alert-dismissible mt-2">
                 <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -158,6 +159,15 @@ if(isset($_GET['cartItem']) && isset($_GET['cartItem']) == 'cart_item'){
     $itemCount = $user->numberOfItem();
 
     echo $itemCount;
+}
+
+
+if(isset($_POST['action']) && $_POST['action'] == 'displayItem'){
+    $output = '';
+    $items = $user->getItemDetailsCart($cid);
+
+    print_r($items);
+
 }
 
 

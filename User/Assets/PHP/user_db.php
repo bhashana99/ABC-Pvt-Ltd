@@ -98,10 +98,10 @@ class UserDB extends Database{
     }
 
     //insert Cart product
-    public function insertCart($name,$price,$image,$qty,$total_price){
-        $sql = "INSERT INTO cart (product_name,product_price,product_image,qty,total_price) VALUES(:name,:price,:image,:qty,:total)";
+    public function insertCart($cid,$name,$price,$image,$qty,$total_price){
+        $sql = "INSERT INTO cart (user_id,product_name,product_price,product_image,qty,total_price) VALUES(:cid,:name,:price,:image,:qty,:total)";
         $stmt = $this->conn->prepare($sql);
-        $stmt->execute(['name'=>$name,'price'=>$price,'image'=>$image,'qty'=>$qty,'total'=>$total_price]);
+        $stmt->execute(['name'=>$name,'price'=>$price,'image'=>$image,'qty'=>$qty,'total'=>$total_price,'cid'=>$cid]);
         
         return true;
     }
@@ -114,6 +114,16 @@ class UserDB extends Database{
         $count = $stmt->rowCount();
 
         return $count;
+    }
+
+    //get cart item details
+    public function getItemDetailsCart($cid){
+        $sql = "SELECT * FROM cart WHERE user_id=:cid";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute(['cid'=>$cid]);
+        $row = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $row;
     }
 
 
