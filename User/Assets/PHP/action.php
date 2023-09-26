@@ -370,6 +370,7 @@ if(isset($_POST['action']) && $_POST['action'] == 'check_out'){
     <h4>Your Phone : '.$phone.'</h4>
     <h4>Total Amount Paid : '.number_format($grandTotal,2).'</h4>
     <h4>Payment Mode : '.$pmode.'</h4>
+    <a href="home.php" class="btn btn-success mt-3"><i class="fas fa-cart-plus"></i>&nbsp;&nbsp;Back to Shopping</a>
  </div>.';
  echo $data;
 
