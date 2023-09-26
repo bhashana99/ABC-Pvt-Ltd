@@ -210,7 +210,7 @@ if(isset($_POST['action']) && $_POST['action'] == 'displayItem'){
 
                                             <input type="hidden" class="pprice" value="'.$item['product_price'].'">
                                             
-                                            <td><input type="number" class="form-control itemQty"   value="'.$item['qty'].'" style="width:75px;"></td>
+                                            <td><input type="number" class="form-control itemQty"   value="'.$item['qty'].'" style="width:75px;" min="1"></td>
 
                                             <td><i class="fa-solid fa-rupee"></i>&nbsp;&nbsp; '.number_format($totalPrice,2).' </td>
                                             <td><a href="#" class="text-danger lead" id="itemRemove"><i class="fas fa-trash-alt"></i></a></td>
@@ -241,7 +241,21 @@ if(isset($_POST['action']) && $_POST['action'] == 'displayItem'){
 }
 
 //handle change qty ajax request
+if(isset($_POST['action']) && $_POST['action'] == 'change_qty'){
+    // print_r($_POST);
+    $qty = $_POST['qty'];
+    $id = $_POST['pid'];
+    $price = $_POST['pprice'];
+    $cid = $cid;
 
+   
+    $total = $price * $qty;
+    // echo 'Qty: '. $qty .', ID: '. $id .', Price: '. $price.' total: '.$total.' ' ;
+
+    $data = $user->changeQty($id,$cid,$total,$qty);
+   
+
+}
 
 
 ?>

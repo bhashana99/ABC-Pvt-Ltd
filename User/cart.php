@@ -111,7 +111,8 @@ $(document).ready(function(){
             var qty = $el.find(".itemQty").val();
 
             // console.log(pid,pprice,qty);
-
+           
+            location.reload(true);
             $.ajax({
                 url: 'Assets/PHP/action.php',
                 method:'post',
@@ -122,7 +123,10 @@ $(document).ready(function(){
                     pid:pid,
                     pprice:pprice},
                 success:function(response){
-                    console.log(response);       
+                    console.log(response);
+                    // location.reload(true);
+                    
+       
                 }
         });
 

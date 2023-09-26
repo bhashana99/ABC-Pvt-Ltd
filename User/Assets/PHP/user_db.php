@@ -126,6 +126,13 @@ class UserDB extends Database{
         return $row;
     }
 
+    //change qty
+    public function changeQty($id,$cid,$total,$qty){
+        $sql = "UPDATE cart SET total_price=:total,qty=:qty WHERE id=:id AND user_id=:cid";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute(['id'=>$id,'total'=>$total,'qty'=>$qty,'cid'=>$cid]);
+        return true;
+    }
 
 
 }
