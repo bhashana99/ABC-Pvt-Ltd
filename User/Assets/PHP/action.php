@@ -259,7 +259,7 @@ if(isset($_POST['action']) && $_POST['action'] == 'change_qty'){
 
 }
 
-//Handle delete all item in cart
+//Handle delete one item in cart
 if(isset($_POST['action']) && $_POST['action'] == 'delete_item'){
     
     // print_r($_POST);
@@ -268,4 +268,9 @@ if(isset($_POST['action']) && $_POST['action'] == 'delete_item'){
     $user->deleteOneItem($pid,$cid);
 }
 
+//Handle delete all item in cart
+if(isset($_POST['action']) && $_POST['action'] == 'deleteAll_item'){
+    // print_r($_POST);
+    $user->deleteAllItem($cid);
+}
 ?>

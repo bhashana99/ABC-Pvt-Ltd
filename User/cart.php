@@ -131,7 +131,7 @@ $(document).ready(function(){
         });
         });
 
-        //delete all item in cart
+        //delete one item in cart
         $("body").on('click','.itemRemove',function(e){
             e.preventDefault();
             var pid = $(this).data('id');
@@ -164,6 +164,32 @@ $(document).ready(function(){
                         icon: 'success',
                         title: 'Item Removed successfully'
                         });
+                }
+            });
+        });
+
+        //delete all items in cart
+        $("body").on('click','.clearCart',function(e){
+            $.ajax({
+                url: 'Assets/PHP/action.php',
+                method:'post',
+                data:{
+                    action:'deleteAll_item',
+                },
+                success:function(response){
+                    // console.log(response);
+                    displayAllItems();
+                    load_cart_item_number();
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Cart cleared successfully',
+                        showConfirmButton: false,
+                        timer: 2500
+                        }).then(function(){
+                            window.location = "home.php";
+                        })
+                        
                 }
             });
         });
