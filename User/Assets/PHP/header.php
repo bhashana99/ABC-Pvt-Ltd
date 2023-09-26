@@ -46,7 +46,7 @@ require_once 'session.php';
             <i class="fas fa-user-cog"></i>&nbsp;Hi! <?= $fname ?>
         </a>
         <div class="dropdown-menu ">
-            <a href="" class="dropdown-item"><i class="fas fa-cog"></i>&nbsp;Setting</a>
+            <a href="setting.php" class="dropdown-item"><i class="fas fa-cog"></i>&nbsp;Setting</a>
             <a href="assets/php/logout.php" class="dropdown-item"><i class="fas fa-sign-out-alt"></i>&nbsp;Logout</a>
         </div>
     </li>
