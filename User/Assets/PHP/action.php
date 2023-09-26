@@ -265,7 +265,7 @@ if(isset($_POST['action']) && $_POST['action'] == 'delete_item'){
     // print_r($_POST);
     $pid = $_POST['pid'];
     // print_r($pid);
-  
+    $user->deleteOneItem($pid,$cid);
 }
 
 ?>

@@ -68,7 +68,7 @@ require_once 'Assets/PHP/header.php';
         </div>
     </div>
 </div>
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
 
 $(document).ready(function(){
@@ -112,7 +112,7 @@ $(document).ready(function(){
 
             // console.log(pid,pprice,qty);
            
-            // location.reload(true);
+            location.reload(true);
             $.ajax({
                 url: 'Assets/PHP/action.php',
                 method:'post',
@@ -145,7 +145,25 @@ $(document).ready(function(){
                     pid : pid
                 },
                 success:function(response){
-                    console.log(response);
+                    // console.log(response);
+                    displayAllItems();
+                    load_cart_item_number();
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 2000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                        });
+
+                        Toast.fire({
+                        icon: 'success',
+                        title: 'Item Removed successfully'
+                        });
                 }
             });
         });

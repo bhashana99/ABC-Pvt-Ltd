@@ -134,6 +134,13 @@ class UserDB extends Database{
         return true;
     }
 
+    //delete item in cart
+    public function deleteOneItem($id,$cid){
+        $sql = "DELETE FROM cart WHERE id=:id AND user_id=:cid";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute(['id'=>$id,'cid'=>$cid]);
+        return true;
+    }
 
 }
 
