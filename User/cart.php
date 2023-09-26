@@ -103,6 +103,29 @@ $(document).ready(function(){
             });
         }
 
+        //change qty ajax request
+        $("body").on('change','.itemQty',function(e){
+            var $el = $(this).closest("tr");
+            var pid = $el.find(".pid").val();
+            var pprice = $el.find(".pprice").val();
+            var qty = $el.find(".itemQty").val();
+
+            // console.log(pid,pprice,qty);
+
+            $.ajax({
+                url: 'Assets/PHP/action.php',
+                method:'post',
+                cache:false,
+                data:{qty:qty,pid:pid,pprice:pprice},
+                success:function(response){
+                    console.log(response);       
+                }
+        });
+
+
+
+        });
+
 
 
 

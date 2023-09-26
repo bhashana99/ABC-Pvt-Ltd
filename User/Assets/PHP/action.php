@@ -211,6 +211,7 @@ if(isset($_POST['action']) && $_POST['action'] == 'displayItem'){
                                             <input type="hidden" class="pprice" value="'.$item['product_price'].'">
                                             
                                             <td><input type="number" class="form-control itemQty"   value="'.$item['qty'].'" style="width:75px;"></td>
+
                                             <td><i class="fa-solid fa-rupee"></i>&nbsp;&nbsp; '.number_format($totalPrice,2).' </td>
                                             <td><a href="#" class="text-danger lead" id="itemRemove"><i class="fas fa-trash-alt"></i></a></td>
                         
@@ -238,6 +239,8 @@ if(isset($_POST['action']) && $_POST['action'] == 'displayItem'){
     }
 
 }
+
+//handle change qty ajax request
 
 
 ?>
