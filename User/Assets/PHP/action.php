@@ -429,5 +429,38 @@ if(isset($_POST['action']) && $_POST['action'] == 'change_pass'){
   
 
 
+//Handle Verify E-Mail Ajax Request
+if(isset($_POST['action']) && $_POST['action'] == 'verify_email'){
+    try{
+        //Server settings
+         //$mail->SMTPDebug = SMTP::DEBUG_SERVER;
+        $mail->isSMTP();
+        $mail->Host = 'smtp.gmail.com';
+        $mail->SMTPAuth = true;
+        $mail->Username = Database::USERNAME;
+        $mail->Password = Database::PASSWORD;
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+        $mail->Port = 465;
+        
+        //Recipients
+        $mail->setFrom(Database::USERNAME,'ABC Phone Store');
+        $mail->addAddress($cemail);
+
+        //Content
+        $mail->isHTML(true);
+        $mail->Subject = 'E-Mail Verification';
+        $mail->Body = '<h4><br><a 
+        href="http://localhost/project/SENG-21253/ABC(Pvt)Ltd/User/verify-email.php?email='.$cemail.'">Verify your E-Mail Click Here.</a></h4>';
+        
+        
+        $mail->send();
+        echo $cuser->showMessage('success','Verification link sent to your E-Mail.');
+    }
+    catch(Exception $e){
+        echo $cuser->showMessage('danger','Something went wrong please try again later!');
+        
+    }
+}
+
 
 ?>

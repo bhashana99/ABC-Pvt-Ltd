@@ -265,7 +265,21 @@ require_once 'Assets/PHP/header.php';
           }
         });
 
-      
+        // Verify E-Mail Ajax Request
+        $("#verify-email").click(function(e){
+          e.preventDefault();
+          $(this).text('Please Wait...');
+
+          $.ajax({
+            url: 'Assets/PHP/action.php',
+            method: 'post',
+            data: { action: 'verify_email'},
+            success:function(response){
+              $("#verifyEmailAlert").html(response);
+              $("#verify-email").text('Verify Now');
+            }
+          });
+        });
 
         
 
