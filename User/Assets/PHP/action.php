@@ -374,11 +374,35 @@ if(isset($_POST['action']) && $_POST['action'] == 'check_out'){
  </div>.';
  echo $data;
 
-
-
-
-
 }
+
+///Handle Profile Update Ajax Request
+if(isset($_FILES['image'])){
+    $name = $cuser->test_input($_POST['name']);
+    $gender = $cuser->test_input($_POST['gender']);
+    $dob = $cuser->test_input($_POST['dob']);
+    $phone = $cuser->test_input($_POST['phone']);
+  
+    $oldImage = $_POST['oldimage'];
+    $user_image = $_FILES['image']['name'];
+    $tmp_image = $_FILES['image']['tmp_name'];
+  
+    if(isset($_FILES['image']['name']) && ($_FILES['image']['name'] != "")){
+        // $user_image = $folder.$_FILES['image']['name'];
+    move_uploaded_file($tmp_image,"../../../images/user_images/$user_image");
+  
+  
+    if($oldImage != null && file_exists($oldImage)){
+      unlink($oldImage);
+  }
+    }
+    else{
+        $user_image = $oldImage;
+    }
+    $user->update_profile($name, $gender, $dob, $phone, $user_image, $cid);
+  }
+
+ 
 
 
 

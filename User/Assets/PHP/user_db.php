@@ -168,6 +168,32 @@ class UserDB extends Database{
 
     }
 
+     //Update Profile of An User
+     public function update_profile($name,$gender,$dob,$phone,$photo,$id){
+        $sql = "UPDATE users SET name = :name, gender = :gender, dob = :dob, phone = :phone, photo = :photo WHERE id = :id AND blocked != 0";
+
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute(['name'=>$name, 'gender'=>$gender, 'dob'=>$dob, 'phone'=>$phone, 'photo'=>$photo,'id'=>$id]);
+
+        return true;
+    }
+
+    //Change Password of An User
+    public function change_password($pass,$id){
+        $sql = "UPDATE users SET password = :pass WHERE id = :id AND deleted != 0 ";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute(['pass'=>$pass,'id'=>$id]);
+        return true;
+    }
+
+    //Verify E-Mail of An User
+    public function verify_email($email){
+        $sql = "UPDATE users SET verified =1 WHERE email = :email AND deleted != 0";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute(['email'=>$email]);
+        return true;
+    }
+
 }
 
 

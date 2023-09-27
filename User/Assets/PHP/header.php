@@ -42,11 +42,11 @@ require_once 'session.php';
         <a class="nav-link <?= (basename($_SERVER['PHP_SELF']) == "cart.php")?"active":""; ?> " href="./cart.php"><i class="fas fa-shopping-cart"></i> <span class="badge badge-danger" id="cart-item"></span></a>
       </li>
       <li class="nav-item dropdown mr-3 ml-3">
-        <a href="#" class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown" >
+        <a href="#" class="nav-link dropdown-toggle <?= (basename($_SERVER['PHP_SELF']) == "setting.php")?"active":""; ?> " id="navbardrop" data-toggle="dropdown" >
             <i class="fas fa-user-cog"></i>&nbsp;Hi! <?= $fname ?>
         </a>
         <div class="dropdown-menu ">
-            <a href="setting.php" class="dropdown-item"><i class="fas fa-cog"></i>&nbsp;Setting</a>
+            <a href="setting.php" class="dropdown-item "><i class="fas fa-cog"></i>&nbsp;Setting</a>
             <a href="assets/php/logout.php" class="dropdown-item"><i class="fas fa-sign-out-alt"></i>&nbsp;Logout</a>
         </div>
     </li>
