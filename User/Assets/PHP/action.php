@@ -449,10 +449,8 @@ if(isset($_POST['action']) && $_POST['action'] == 'verify_email'){
         //Content
         $mail->isHTML(true);
         $mail->Subject = 'E-Mail Verification';
-        $mail->Body = '<h4><br><a 
-        href="http://localhost/project/SENG-21253/ABC(Pvt)Ltd/User/verify-email.php?email='.$cemail.'">Verify your E-Mail Click Here.</a></h4>';
-        
-        
+        $mail->Body = '<h4><br><a href="http://localhost/project/SENG-21253/ABC(Pvt)Ltd/User/verify-email.php?email='.$cemail.'">Verify your E-Mail Click Here.</a></h4>';
+
         $mail->send();
         echo $cuser->showMessage('success','Verification link sent to your E-Mail.');
     }

@@ -275,8 +275,10 @@ require_once 'Assets/PHP/header.php';
             method: 'post',
             data: { action: 'verify_email'},
             success:function(response){
+              // console.log(response);
               $("#verifyEmailAlert").html(response);
               $("#verify-email").text('Verify Now');
+
             }
           });
         });
