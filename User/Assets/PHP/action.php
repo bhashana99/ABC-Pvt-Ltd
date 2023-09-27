@@ -403,6 +403,30 @@ if(isset($_FILES['image'])){
   }
 
  
+ // Handle Change Password Ajax Request
+if(isset($_POST['action']) && $_POST['action'] == 'change_pass'){
+    // print_r($_POST);
+    $currentPass = $_POST['curpass'];
+    $newPass = $_POST['newpass'];
+    $cnewPass = $_POST['cnewpass'];
+ 
+    $hnewPass = password_hash($newPass, PASSWORD_DEFAULT);
+ 
+    if($newPass != $cnewPass){
+     echo $user->showMessage('danger', 'Password did not matched!');
+    }
+    else{
+     if(password_verify($currentPass, $cpass)){
+         $user->change_password($hnewPass,$cid);
+         echo $user->showMessage('success','Password Changed Successfully!');
+
+     }
+     else{
+         echo $user->showMessage('danger','Current Password is Wrong!');
+     }
+    }
+ }
+  
 
 
 

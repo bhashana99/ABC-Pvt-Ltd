@@ -235,6 +235,36 @@ require_once 'Assets/PHP/header.php';
           });
         });
 
+         //Change Password Ajax Request
+         $("#changePassBtn").click(function(e){
+          if($("#change-pass-form")[0].checkValidity()){
+            e.preventDefault();
+            $("#changePassBtn").val('Please Wait...');
+
+            if($("#newpass").val() != $("#cnewpass").val()){
+              $("#changepassError").text('* Password did not matched!');
+              $("#changePassBtn").val('Please Wait...');
+
+            }
+            else{
+              $.ajax({
+                url:'Assets/PHP/action.php',
+                method: 'post',
+                data: $("#change-pass-form").serialize()+'&action=change_pass',
+                success:function(response){
+                  //console.log(response);
+                  $("#changepassAlert").html(response);
+                  $("#changePassBtn").val('Change Password');
+                  $("#changepassError").text('');
+                  $("#change-pass-form")[0].reset();
+
+                    
+                }
+              })
+            }
+          }
+        });
+
       
 
         
