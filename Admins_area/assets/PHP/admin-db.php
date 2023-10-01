@@ -142,6 +142,17 @@ class Admin extends Database{
             return true;
            }
 
+           //Fetch All Registered Users
+            public function fetchAllUsers($val){
+                $sql = "SELECT * FROM users WHERE blocked != $val";
+                $stmt = $this->conn->prepare($sql);
+                $stmt->execute();
+                $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+                return $result;
+            }
+
+
 
 
 }
