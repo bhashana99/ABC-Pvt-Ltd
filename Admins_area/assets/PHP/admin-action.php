@@ -337,7 +337,7 @@ if(isset($_POST['action']) && $_POST['action'] == 'fetchAllBlockedUsers'){
                  echo $output;               
     }
     else{
-     echo '<h3 class="text-center text-secondary">:( No any user blocked yet!</h3>';
+     echo '<h3 class="text-center text-secondary">:( No any blocked user yet!</h3>';
     }
  }
 
