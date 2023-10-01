@@ -64,7 +64,7 @@ if(isset($_POST['action']) && $_POST['action'] == 'fetchAllProduct'){
                                     <td><img src="'.$image.'" class="rounded mx-auto d-block" width="50px" height="50px"></td>
                                     <td>'.$product['title'].'</td>
                                     <td>'.$product['description'].'</td>
-                                    <td>$'.$product['price'].'</td>
+                                    <td><i class="fa-solid fa-rupee"></i>&nbsp;'.$product['price'].'</td>
                                     <td>
                                     <a href="#" id="'.$product['id'].'" title="Edit Product details" 
                                      class="text-primary productEditIcon" data-toggle="modal" data-target="#editProductModal" >
