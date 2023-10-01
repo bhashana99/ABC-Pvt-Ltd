@@ -82,7 +82,7 @@ require_once './admin-header.php';
       //Fetch All Users Ajax Request
       function fetchAllUsers(){
         $.ajax({
-            url:'../assets/php/admin-action.php',
+          url:'../assets/php/admin-action.php',
           method: 'post',
           data: {action: 'fetchAllUsers'},
           success: function(response){

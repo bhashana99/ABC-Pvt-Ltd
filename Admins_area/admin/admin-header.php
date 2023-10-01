@@ -9,9 +9,8 @@ if(!isset($_SESSION['aEmail'])){
 $titles = array(
     'admin-insertProduct.php' => 'Insert Product',
     'admin-productCustomize.php' => 'Product Customize',
-    'admin-userDetails.php' => 'Users'
-    
-    
+    'admin-userDetails.php' => 'Users',
+    'admin-orders.php' => 'Orders'
 );
 
 // Get the current PHP file name
@@ -81,6 +80,11 @@ $title = isset($titles[$currentFile]) ? $titles[$currentFile] : 'Default Title';
 
                 <div class="list-group list-group-flush mt-5">
 
+                    <a href="admin-orders.php" class="list-group-item text-light admin-link
+                    <?= (basename($_SERVER['PHP_SELF']) == 'admin-orders.php')? "nav-active":"" ?>">
+                    <i class="fa-solid fa-truck-ramp-box"></i>&nbsp;&nbsp;Orders
+                    </a>
+
                     <a href="admin-productCustomize.php" class="list-group-item text-light admin-link
                     <?= (basename($_SERVER['PHP_SELF']) == 'admin-productCustomize.php')? "nav-active":"" ?>">
                     <i class="fa-solid fa-wrench"></i>&nbsp;&nbsp;Available products
@@ -96,7 +100,7 @@ $title = isset($titles[$currentFile]) ? $titles[$currentFile] : 'Default Title';
                     <i class="fa-solid fa-users"></i>&nbsp;&nbsp;Users Details
                     </a>
 
-               
+                   
                 </div>
             </div>
 

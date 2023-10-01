@@ -186,4 +186,14 @@ class Admin extends Database
 
         return true;
     }
+
+    //Fetch all orders
+    public function fetchAllOrders($val){
+        $sql = "SELECT * from orders WHERE complete = $val ";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $result;
+    }
 }

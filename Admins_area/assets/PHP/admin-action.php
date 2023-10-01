@@ -348,5 +348,45 @@ if(isset($_POST['res_id'])){
     $admin->userAction($id,1);
 }
 
+//Handle fetch all Orders to be processed details ajax
+if(isset($_POST['action']) && $_POST['action'] == 'fetchAllProcessedOrders'){
+    // echo 'working';
+    $output = '';
+    $data = $admin->fetchAllOrders(0);
+
+    if($data){
+        $output .= '<table class="table table-striped table-bordered text-center">
+        <thead>
+            <tr>
+                <th>Order id</th>
+                <th>Products</th>
+                <th>Amount</th>
+                <th>Action</th>    
+            </tr>
+        </thead>
+                <tbody>';
+                foreach($data as $order){
+                    $output .= '<tr>
+                    <td>'.$order['order_id'].'</td>
+                    <td>'.$order['products'].'</td>
+                    <td>'.$order['amount_paid'].'</td>
+                    <td>
+                    <a href="#" id="'.$order['order_id'].'" title="More details" 
+                     class="text-primary moreDetailsIcon" data-toggle="modal" data-target="#moreDetailModal" >
+                     <i class="fa-solid fa-circle-info"></i></a>&nbsp;&nbsp;
+                
+                    <a href="#" id="'.$order['order_id'].'" title="Finish Order" class="text-danger orderFinishIcon" >
+                    <i class="fa-solid fa-clipboard-check"></i></a>&nbsp;&nbsp;
+                 </td>
+                </tr>';
+                }
+                $output .= '</tbody>
+                </table>';
+                        
+                echo $output; 
+    }
+
+}
+
 
 ?>
