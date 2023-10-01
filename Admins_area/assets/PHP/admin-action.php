@@ -287,4 +287,59 @@ if(isset($_POST['blk_id'])){
 }
 
 
+//Handle Fetch All Blocked Users Ajax Request
+if(isset($_POST['action']) && $_POST['action'] == 'fetchAllBlockedUsers'){
+    // echo 'Working..';
+    $output = '';
+    $data = $admin->fetchAllUsers(1);
+    $path = '../../images/user_images/';
+ 
+    if($data){
+     $output .= '<table class="table table-striped table-bordered text-center">
+                     <thead>
+                         <tr>
+                             <th>#</th>
+                             <th>Image</th>
+                             <th>Name</th>
+                             <th>E-Mail</th>
+                             <th>Phone</th>
+                             <th>Gender</th>
+                             <th>Verified</th>
+                             <th>Action</th>
+                         </tr>
+                     </thead>
+                     <tbody>';
+                 foreach ($data as $row) {
+                     if($row['photo'] != ''){
+                         $uphoto = $path.$row['photo'];
+                     }
+                     else{
+                        $uphoto = '../../images/avatar.png';
+                     }
+                     $output .= '<tr>
+                                     <td>'.$row['id'].'</td>
+                                     <td><img src="'.$uphoto.'" class="rounded-circle" width="40px" height="40px"></td>
+                                     <td>'.$row['name'].'</td>
+                                     <td>'.$row['email'].'</td>
+                                     <td>'.$row['phone'].'</td>
+                                     <td>'.$row['gender'].'</td>
+                                     <td>'.$row['verified'].'</td>
+                                     <td>
+                                         <a href="#" id="'.$row['id'].'" title="Restore User" 
+                                         class="text-white restoreUserIcon badge badge-dark p-2" >
+                                            Restore</a>
+                                      </td>
+                                 </tr>';
+                 }
+                 $output .= '</tbody>
+                 </table>';
+                         
+                 echo $output;               
+    }
+    else{
+     echo '<h3 class="text-center text-secondary">:( No any user blocked yet!</h3>';
+    }
+ }
+
+
 ?>

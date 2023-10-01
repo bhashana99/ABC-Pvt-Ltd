@@ -17,6 +17,21 @@ require_once './admin-header.php';
     </div>
 </div>
 
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card my-2 border-danger">
+            <div class="card-header bg-danger text-white">
+                <h4 class="m-0">Blocked Users</h4>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive" id="showAllBlockedUsers">
+                    <p class="text-center align-self-center lead">Please Wait...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- Display User's in Details Model -->
 <div class="modal fade" id="showUserDetailsModal">
   <div class="modal-dialog modal-dialog-centered mw-100 w-50">
@@ -125,10 +140,28 @@ require_once './admin-header.php';
                 'success'
           )
           fetchAllUsers();
+          fetchAllBlockedUsers();
             }
 
           });
     });
+
+    fetchAllBlockedUsers();
+      //Fetch All Users Blocked Ajax Request
+      function fetchAllBlockedUsers(){
+        $.ajax({
+            url:'../assets/php/admin-action.php',
+          method: 'post',
+          data: {action: 'fetchAllBlockedUsers'},
+          success: function(response){
+            //console.log(response);
+            $("#showAllBlockedUsers").html(response);
+            $("table").DataTable();
+            fetchAllUsers();
+            
+          }
+        });
+      }
 
 
     });
