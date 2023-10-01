@@ -95,13 +95,15 @@ if(isset($_POST['edit_id'])){
     echo json_encode($row);
 }
 
+//Handle product updated ajax request
 if(isset($_POST['action']) && $_POST['action'] == 'update_product'){
     // print_r($_POST);
-    $id = $admin->test_input($_POST['id']);
+    $id = $_POST['id'];
     $title = $admin->test_input($_POST['title']);
     $description = $admin->test_input($_POST['description']);
     $price = $admin->test_input($_POST['price']);
 
+    // echo $id, " ",$title," ",$description," ",$price;
     $admin->updateProduct($id,$title,$description,$price);    
 }
 

@@ -65,10 +65,17 @@ class Admin extends Database{
   
        //Update Product details
        public function updateProduct($id,$title,$desc,$price){
-        $sql = "UPDATE products SET title=:title, description=:desc, price=:price WHERE id=:id";
+        $sql = "UPDATE products SET title = :title, description = :desc, price = :price WHERE id=:id";
         $stmt = $this->conn->prepare($sql);
-        $stmt->execute(['id'=>$id,'title'=>$title, 'desc'=>$desc, 'price'=>$price]);
-        return true;
+        $result = $stmt->execute(['id' => $id,'title' => $title, 'desc' => $desc, 'price' => $price]);
+        
+        if($result){
+            return 'success';
+        }else{
+
+            return 'error';
+        }
+        
        }
   
        //delete product

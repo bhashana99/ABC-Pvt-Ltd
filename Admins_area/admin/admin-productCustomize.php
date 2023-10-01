@@ -103,8 +103,41 @@ require_once './admin-header.php';
                     $("#price").val(data.price);
                 }
 
-            })
-        })
+            });
+        });
+
+        //updated product details
+        $("#editProductBtn").click(function(e){
+            if($("#editProductForm")[0].checkValidity()){
+                e.preventDefault();
+
+                $.ajax({
+                    url:'../assets/php/admin-action.php',
+                    method:'post',
+                    data: $("#editProductForm").serialize()+"&action=update_product",
+                    success:function(response){
+                        console.log(response);
+                        if(response === 'success'){
+                            Swal.fire({
+                            title: 'Note Update successfully!',
+                            type: 'success'
+                        });
+                        }else{
+                            Swal.fire({
+                            title: 'Product Update Failed!',
+                            type: 'error'
+                        });
+                        }
+                        
+                        $("#editProductForm")[0].reset();
+                        $("#editProductModal").modal('hide');
+                        fetchAllProduct();
+                       
+                    }
+                });
+            }
+        });
+
        
 
        //delete product ajax request
