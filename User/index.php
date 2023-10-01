@@ -1,3 +1,11 @@
+<?php
+
+session_start();
+if(isset($_SESSION['user'])){
+  header('location:home.php');
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -241,7 +249,7 @@
             else{
               $("#passError").text('');
               $.ajax({
-                url: 'assets/php/action.php',
+                url: 'Assets/PHP/main-action.php',
                 method: 'post',
                 data: $("#register-form").serialize()+'&action=register',
                 success:function(response){
@@ -268,7 +276,7 @@
 
             $("#login-btn").val('Please Wait...');
             $.ajax({
-              url: 'assets/php/action.php',
+              url: 'assets/php/main-action.php',
               method: 'post',
               data: $("#login-form").serialize()+'&action=login',
               success:function(response){
@@ -293,7 +301,7 @@
             $("#forgot-btn").val('Please Wait...');
 
             $.ajax({
-              url: 'assets/php/action.php',
+              url: 'Assets/PHP/main-action.php',
               method: 'post',
               data: $("#forgot-form").serialize()+'&action=forgot',
               success:function(response){

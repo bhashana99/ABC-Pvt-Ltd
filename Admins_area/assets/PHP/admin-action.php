@@ -5,9 +5,10 @@ require_once 'admin-db.php';
 $admin = new Admin();
 session_start();
 
+
 //Handle Admin Login Ajax Request
 if(isset($_POST['action']) && $_POST['action'] == 'superAdminLogin'){
-    //print_r($_POST);
+    // print_r($_POST);
     $email = $admin->test_input($_POST['email']);
     $password = $admin->test_input($_POST['password']);
 
@@ -18,10 +19,10 @@ if(isset($_POST['action']) && $_POST['action'] == 'superAdminLogin'){
     
     if($loggedInSuperAdmin != null){
         echo 'superAdmin_login';
-        $_SESSION['email'] = '$email';
+        $_SESSION['sAemail'] = $email;
     }else if($loggedInAdmin != null){
         echo 'admin_login';
-        $_SESSION['email'] = '$email';
+        $_SESSION['aEmail'] = $email;
     }
     else{
         

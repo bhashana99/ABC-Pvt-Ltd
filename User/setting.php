@@ -1,9 +1,6 @@
 <?php
 
 require_once 'Assets/PHP/header.php';
-// require_once 'Assets/PHP/user_db.php';
-
-
 
 ?>
 <div class="container">

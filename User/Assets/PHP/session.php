@@ -3,17 +3,17 @@
 session_start();
 require_once 'user_db.php';
 
-// cuser= Current User
-$cuser = new UserDB();
+// cUser= Current User
+$cUser = new UserDB();
 
 if(!isset($_SESSION['user'])){
-    header('location:../../index.php');
+    header('location:../index.php');
     die;
 }
 
 $cemail = $_SESSION['user'];
 
-$data = $cuser->currentUser($cemail);
+$data = $cUser->currentUser($cemail);
 
 $cid = $data['id'];
 $cname = $data['name'];

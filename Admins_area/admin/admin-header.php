@@ -1,7 +1,7 @@
 <?php
 session_start();
-if(!isset($_SESSION['username'])){
-  header('location:index.php');
+if(!isset($_SESSION['aEmail'])){
+  header('location:../index.php');
   exit();
 }
 
@@ -76,7 +76,7 @@ $title = isset($titles[$currentFile]) ? $titles[$currentFile] : 'Default Title';
 <body>
 <div class="container-fluid">
         <div class="row">
-            <div class="admin-nav p-0">
+            <div class="admin-nav">
                 <h4 class="text-light text-center p-2">Admin panel</h4>
 
                 <div class="list-group list-group-flush">

@@ -67,13 +67,14 @@
           method:'post',
           data: $("#admin-login-form").serialize()+'&action=superAdminLogin',
           success:function(response){
-          //  console.log(response);
+           console.log(response);
           if(response === 'superAdmin_login'){
             window.location = 'super_admin/superAdmin-productCustomize.php';
+    
           }else if(response == 'admin_login'){
             window.location = 'admin/admin-insertProduct.php';
-          }
-          else{
+          
+          }else{
             $("#adminLoginAlert").html(response);
           }
           $("#adminLoginBtn").val('Login');
