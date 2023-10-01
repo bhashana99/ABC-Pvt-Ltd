@@ -116,7 +116,7 @@ require_once './admin-header.php';
                     method:'post',
                     data: $("#editProductForm").serialize()+"&action=update_product",
                     success:function(response){
-                        console.log(response);
+                        // console.log(response);
                         if(response === 'success'){
                             Swal.fire({
                             title: 'Note Update successfully!',

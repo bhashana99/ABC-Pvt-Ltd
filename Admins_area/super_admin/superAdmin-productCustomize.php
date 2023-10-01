@@ -82,29 +82,29 @@ require_once './superAdmin-header.php';
             });
         }
 
-       //edit product details ajax request
+       // edit product details
        $("body").on("click",".productEditIcon", function(e){
-        e.preventDefault();
-        var pEdit_id = $(this).attr('id');
-        $.ajax({
-            url:'../assets/php/admin-action.php',
-            method:'post',
-            data:{pEdit_id: pEdit_id},
-            success: function(response){
-                // console.log(response);
-                 data = JSON.parse(response);
-                 console.log(data);
-                $("#id").val(data.id);
-                // console.log(data.id);
-                $("#title").val(data.title);
-                $("#description").val(data.description);
-                $("#price").val(data.price);
-                
+            e.preventDefault();
 
-            }
+            edit_id = $(this).attr('id');
+            // console.log(edit_id);
+
+            $.ajax({
+                url:'../assets/php/admin-action.php',
+                method:'post',
+                data:{edit_id:edit_id},
+                success:function(response){
+                    // console.log(response);
+                    data = JSON.parse(response);
+                    // console.log(response);
+                    $("#title").val(data.title);
+                    $("#description").val(data.description);
+                    $("#price").val(data.price);
+                }
+
+            });
         });
 
-       });
 
        //update product details ajax request
        $("#editProductBtn").click(function(e){
@@ -117,12 +117,21 @@ require_once './superAdmin-header.php';
                 data: $("#editProductForm").serialize()+"&action=update_product",
                 success:function(response){
                     // console.log(response);
-                    Swal.fire({
-                        title: 'Product Update successfully!',
-                        type: 'success'
-                    });
-                    $("#editProductForm")[0].reset();
-                    $("#editProductModal").modal('hide');
+                    if(response === 'success'){
+                            Swal.fire({
+                            title: 'Note Update successfully!',
+                            type: 'success'
+                        });
+                        }else{
+                            Swal.fire({
+                            title: 'Product Update Failed!',
+                            type: 'error'
+                        });
+                        }
+                        
+                        $("#editProductForm")[0].reset();
+                        $("#editProductModal").modal('hide');
+                        fetchAllProduct();
                 }
             })
         }
