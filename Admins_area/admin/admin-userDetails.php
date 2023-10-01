@@ -150,7 +150,7 @@ require_once './admin-header.php';
       //Fetch All Users Blocked Ajax Request
       function fetchAllBlockedUsers(){
         $.ajax({
-            url:'../assets/php/admin-action.php',
+          url:'../assets/php/admin-action.php',
           method: 'post',
           data: {action: 'fetchAllBlockedUsers'},
           success: function(response){
@@ -162,6 +162,41 @@ require_once './admin-header.php';
           }
         });
       }
+
+      //Restore Blocked An User Ajax Request
+      $("body").on("click",".restoreUserIcon",function(e){
+      e.preventDefault();
+      res_id = $(this).attr('id');
+
+      Swal.fire({
+        title: 'Are you sure want restore this user?',
+        //text: "You won't be able to revert this!",
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, restore user!'
+      }).then((result) => {
+        if (result.value) {
+          $.ajax({
+            url:'../assets/php/admin-action.php',
+            method:'post',
+            data:{res_id: res_id},
+            success:function(response){
+              Swal.fire(
+                'Restored!',
+                'User restored successfully!',
+                'success'
+          )
+          fetchAllBlockedUsers();
+          fetchAllUsers();
+            }
+
+          });
+         
+        }
+      });
+    });
 
 
     });

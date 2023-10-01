@@ -341,5 +341,12 @@ if(isset($_POST['action']) && $_POST['action'] == 'fetchAllBlockedUsers'){
     }
  }
 
+  //Handle Restore Blocked User Ajax Request
+if(isset($_POST['res_id'])){
+    $id = $_POST['res_id'];
+
+    $admin->userAction($id,1);
+}
+
 
 ?>
