@@ -109,6 +109,28 @@ require_once './admin-header.php';
       });
 
 
+       //Block An User Ajax Request
+       $("body").on("click",".blockUserIcon",function(e){
+        e.preventDefault();
+        blk_id = $(this).attr('id');
+
+          $.ajax({
+            url:'../assets/php/admin-action.php',
+            method:'post',
+            data:{blk_id: blk_id},
+            success:function(response){
+              Swal.fire(
+                'Blocked!',
+                'User blocked successfully!',
+                'success'
+          )
+          fetchAllUsers();
+            }
+
+          });
+    });
+
+
     });
 </script>
 

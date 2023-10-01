@@ -177,4 +177,13 @@ class Admin extends Database
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
         return $result;
     }
+
+    //Delete An User
+    public function userAction($id,$val){
+        $sql = "UPDATE users SET blocked = $val WHERE id = :id";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute(['id'=>$id]);
+
+        return true;
+    }
 }

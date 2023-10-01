@@ -280,4 +280,11 @@ if(isset($_POST['details_id'])){
 }
 
 
+//Handle blocked an User Request
+if(isset($_POST['blk_id'])){
+    $id = $_POST['blk_id'];
+    $admin->userAction($id,0);
+}
+
+
 ?>
