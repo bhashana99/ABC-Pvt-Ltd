@@ -217,7 +217,7 @@ if(isset($_POST['action']) && $_POST['action'] == 'fetchAllUsers'){
     // echo 'Working..';
     $output = '';
     $data = $admin->fetchAllUsers(0);
-    $path = '../../images/product_images/';
+    $path = '../../images/user_images/';
  
     if($data){
      $output .= '<table class="table table-striped table-bordered text-center">
@@ -269,6 +269,15 @@ if(isset($_POST['action']) && $_POST['action'] == 'fetchAllUsers'){
     }
  }
  
+ 
+//Handle Display User In Details Ajax Request
+if(isset($_POST['details_id'])){
+    $id = $_POST['details_id'];
+
+    $data = $admin->fetchUserDetailsById($id);
+
+    echo json_encode($data);
+}
 
 
 ?>

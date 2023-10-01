@@ -17,7 +17,41 @@ require_once './admin-header.php';
     </div>
 </div>
 
+<!-- Display User's in Details Model -->
+<div class="modal fade" id="showUserDetailsModal">
+  <div class="modal-dialog modal-dialog-centered mw-100 w-50">
+    <div class="modal-content">
+      <div class="modal-header ">
+        <h4 class="modal-title" id="getName"></h4>
+        <button class="close" type="button" data-dismiss="modal">&times;</button>
+      </div>
 
+      <div class="modal-body">
+        <div class="card-deck">
+
+          <div class="card border-primary">
+            <div class="card-body">
+              <p id="getEmail"></p>
+              <p id="getPhone"></p>
+              <p id="getDob"></p>
+              <p id="getGender"></p>
+              <p id="getCreated"></p>
+              <p id="getVerified"></p>
+            </div>
+          </div>
+
+          <div class="card align-self-center" id="getImage"></div>
+
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
 
 
 <!-- Footer Area -->
@@ -43,6 +77,38 @@ require_once './admin-header.php';
           }
         });
       }
+
+      //Display User in Details Ajx Request
+      $("body").on("click", ".userDetailsIcon", function(e){
+        e.preventDefault();
+
+        details_id = $(this).attr('id');
+
+        $.ajax({
+            url:'../assets/php/admin-action.php',
+          type: 'post',
+          data: {details_id: details_id},
+          success:function(response){
+           //console.log(response);
+           data = JSON.parse(response);
+           $("#getName").text(data.name+' '+'(ID: '+data.id+')');
+           $("#getPhone").text('Phone :'+data.phone);
+           $("#getDob").text('DOB :'+data.dob);
+           $("#getGender").text('Gender :'+data.gender);
+           $("#getCreated").text('Joined on :'+data.created_at);
+           $("#getVerified").text('Verified :'+data.verified);
+
+           if(data.photo != ''){
+            $("#getImage").html('<img src="../assets/php/'+data.photo+'" class="img-thumbnail img-fluid align-self-center" width="280px" >');
+           }
+           else{
+            $("#getImage").html('<img src="../../images/avatar.png" class="img-thumbnail img-fluid align-self-center" width="280px" >');
+           }
+          }
+        });
+      });
+
+
     });
 </script>
 
