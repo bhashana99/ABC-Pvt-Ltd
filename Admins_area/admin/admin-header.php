@@ -79,7 +79,7 @@ $title = isset($titles[$currentFile]) ? $titles[$currentFile] : 'Default Title';
             <div class="admin-nav">
                 <h4 class="text-light text-center p-2">Admin panel</h4>
 
-                <div class="list-group list-group-flush">
+                <div class="list-group list-group-flush mt-5">
 
                     <a href="admin-productCustomize.php" class="list-group-item text-light admin-link
                     <?= (basename($_SERVER['PHP_SELF']) == 'admin-productCustomize.php')? "nav-active":"" ?>">
