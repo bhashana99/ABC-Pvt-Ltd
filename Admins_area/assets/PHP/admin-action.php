@@ -88,14 +88,11 @@ if(isset($_POST['action']) && $_POST['action'] == 'fetchAllProduct'){
 
 
 //handle product edit ajax request
-if(isset($_POST['pEdit_id'])){
-    //print_r($_POST);
-    $eid = $_POST['pEdit_id'];
-    //print_r($id);
-    $row = $admin->getProductDetails($eid);
-    // print_r($row);
+if(isset($_POST['edit_id'])){
+    // print_r($_POST);
+    $id = $_POST['edit_id']; 
+    $row = $admin->getProductDetails($id);
     echo json_encode($row);
-
 }
 
 if(isset($_POST['action']) && $_POST['action'] == 'update_product'){

@@ -33,16 +33,16 @@ require_once './admin-header.php';
       <form action="#" method="post" id="editProductForm" class="px-3">
                     <input type="hidden" name="id" id="id">
                     <div class="form-group">
-                        <label for="title" class="form-label">Product Title</label>
+                        <label for="title" class="form-label ">Title</label>
                         <input type="text" name="title" id="title" class="form-control form-control-lg" placeholder="Enter Title" required autofocus>
                     </div>
                     <div class="form-group">
-                        <label for="description" class="form-label">Product description</label>
+                        <label for="description" class="form-label">description</label>
                         <textarea class="form-control form-control-lg" id="description" name="description"  rows="3" placeholder="Write your description Here..." required ></textarea>
                     </div>
                     
                     <div class="form-group">
-                    <label for="price" class="form-label">Product Price</label>
+                    <label for="price" class="form-label">Price</label>
                     <div class="input-group">
                         <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fa-solid fa-rupee-sign"></i></span>
@@ -82,51 +82,30 @@ require_once './admin-header.php';
             });
         }
 
-       //edit product details ajax request
-       $("body").on("click",".productEditIcon", function(e){
-        e.preventDefault();
-        var pEdit_id = $(this).attr('id');
-        $.ajax({
-            url:'../assets/php/admin-action.php',
-            method:'post',
-            data:{pEdit_id: pEdit_id},
-            success: function(response){
-                // console.log(response);
-                 data = JSON.parse(response);
-                 console.log(data);
-                $("#id").val(data.id);
-                // console.log(data.id);
-                $("#title").val(data.title);
-                $("#description").val(data.description);
-                $("#price").val(data.price);
-                
-
-            }
-        });
-
-       });
-
-       //update product details ajax request
-       $("#editProductBtn").click(function(e){
-        if($("#editProductForm")[0].checkValidity()){
+      
+        // edit product details
+        $("body").on("click",".productEditIcon", function(e){
             e.preventDefault();
+
+            edit_id = $(this).attr('id');
+            // console.log(edit_id);
 
             $.ajax({
                 url:'../assets/php/admin-action.php',
                 method:'post',
-                data: $("#editProductForm").serialize()+"&action=update_product",
+                data:{edit_id:edit_id},
                 success:function(response){
                     // console.log(response);
-                    Swal.fire({
-                        title: 'Product Update successfully!',
-                        type: 'success'
-                    });
-                    $("#editProductForm")[0].reset();
-                    $("#editProductModal").modal('hide');
+                    data = JSON.parse(response);
+                    // console.log(response);
+                    $("#title").val(data.title);
+                    $("#description").val(data.description);
+                    $("#price").val(data.price);
                 }
+
             })
-        }
-       });
+        })
+       
 
        //delete product ajax request
        $("body").on("click",".deleteProductIcon",function(e){
