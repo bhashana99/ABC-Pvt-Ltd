@@ -88,7 +88,7 @@ require_once 'superAdmin-header.php';
             success: function(response){
                 // console.log(response);
                  data = JSON.parse(response);
-                   console.log(data);
+                //    console.log(data);
                 $("#id").val(data.id);
                 // console.log(data.id);
                 $("#name").val(data.name);

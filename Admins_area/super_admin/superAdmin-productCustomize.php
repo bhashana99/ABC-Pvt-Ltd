@@ -97,6 +97,7 @@ require_once './superAdmin-header.php';
                     // console.log(response);
                     data = JSON.parse(response);
                     // console.log(response);
+                    $("#id").val(data.id);
                     $("#title").val(data.title);
                     $("#description").val(data.description);
                     $("#price").val(data.price);
@@ -116,18 +117,11 @@ require_once './superAdmin-header.php';
                 method:'post',
                 data: $("#editProductForm").serialize()+"&action=update_product",
                 success:function(response){
-                    console.log(response);
-                    if(response === 'success'){
+                    // console.log(response);
                             Swal.fire({
-                            title: 'Note Update successfully!',
+                            title: 'Product Update successful!',
                             type: 'success'
                         });
-                        }else{
-                            Swal.fire({
-                            title: 'Product Update Failed!',
-                            type: 'error'
-                        });
-                        }
                         
                         $("#editProductForm")[0].reset();
                         $("#editProductModal").modal('hide');
