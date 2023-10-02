@@ -206,5 +206,11 @@ class Admin extends Database
 
         return $result;
     }
-    
+
+    public function completeOrder($complete_id,$val){
+        $sql = "UPDATE orders SET complete=$val WHERE order_id=:order_id";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute(['order_id'=>$complete_id]);
+        return true;
+    }
 }

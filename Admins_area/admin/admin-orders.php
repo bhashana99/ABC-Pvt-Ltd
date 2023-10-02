@@ -39,7 +39,7 @@ require_once './admin-header.php';
 </div>
         </div>
     </div>
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
     $(document).ready(function(e){
 
@@ -95,15 +95,39 @@ require_once './admin-header.php';
         $("body").on("click",".orderCompleteIcon", function(e){
             e.preventDefault();
             var complete_id = $(this).attr("id");
-            $.ajax({
+
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You want to complete this Order!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, complete it!'
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
                 url:'../assets/php/admin-action.php',
                 method: 'post',
                 data:{complete_id:complete_id},
                 success:function(response){
-                    console.log(response);
+                    // console.log(response);
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Order Complete',
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    fetchAllProcessedOrders();
+
                 }
             });
-        })
+                }
+                });
+
+           
+        });
 
 
     });

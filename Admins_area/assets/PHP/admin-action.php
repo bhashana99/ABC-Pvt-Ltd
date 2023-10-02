@@ -400,7 +400,12 @@ if(isset($_POST['info_id'])){
 
 }
 
-//Handle complete order ajax 
+//Handle complete order ajax
+if(isset($_POST['complete_id'])){
+    // print_r($_POST);
+    $id = $_POST['complete_id'];
+    $admin->completeOrder($id,1);
+} 
 
 
 ?>
