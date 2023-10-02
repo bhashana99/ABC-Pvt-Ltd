@@ -196,4 +196,15 @@ class Admin extends Database
 
         return $result;
     }
+
+    //display order info
+    public function orderInfo($info_id,$val){
+        $sql = "SELECT * FROM orders WHERE order_id=:order_id AND complete = $val";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute(['order_id'=>$info_id]);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $result;
+    }
+    
 }

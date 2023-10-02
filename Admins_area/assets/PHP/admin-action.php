@@ -388,5 +388,15 @@ if(isset($_POST['action']) && $_POST['action'] == 'fetchAllProcessedOrders'){
 
 }
 
+//Handle order info ajax request
+if(isset($_POST['info_id'])){
+    // print_r($_POST);
+    $id = $_POST['info_id'];
+
+    $row = $admin->orderInfo($id,0);
+    echo json_encode($row);
+    
+}
+
 
 ?>

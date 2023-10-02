@@ -69,7 +69,24 @@ require_once './admin-header.php';
                 method: 'post',
                 data: {info_id: info_id},
                 success:function(response){
-                    console.log(response);
+                    // console.log(response);
+                    data = JSON.parse(response);
+                    // console.log(response);
+                    Swal.fire({
+                        title: '<Strong>Order : ID('+data.order_id+')</strong>',
+                        type:'info',
+                        html: '<b>Action : '+'<span class="text-warning">to be processed</span></b>'+
+                            '<br><b>User Id : </b>'+data.user_id+
+                            '<br><br><b>Products : </b>'+data.products+
+                            '<br><br><b>Amount : </b>'+data.amount_paid+
+                            '<br><p class="text-primary">Contact info</p>'+
+                            '<b>Name : </b>'+data.name+
+                            '<br><br><b>phone : </b>'+data.phone+
+                            '<br><br><b>Address : </b>'+data.address+
+                            '<br><br><b>E-Mail : </b>'+data.email+
+                            '<br><br><b>Payment Method : </b>'+data.pmode,
+                        showCloseButton: true,
+                    });
                 }
             });
         });
