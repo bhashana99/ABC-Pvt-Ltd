@@ -3,6 +3,16 @@
 require_once './superAdmin-header.php';
 ?>
 
+<div  class="d-flex justify-content-end">
+    <button id="block-box-btn" class="btn btn-danger btn-lg  mt-4 "> <i class="fa-solid fa-repeat"></i> Blocked Users</button>
+</div>
+
+<div  class="d-flex justify-content-end" >
+    <button id="active-box-btn" class="btn btn-warning btn-lg  mt-4 " style="display: none;"> <i class="fa-solid fa-repeat"></i> Active Users </button>
+</div>
+
+
+<div id="active-user-box" class="mt-4">
 <div class="row">
     <div class="col-lg-12">
         <div class="card my-2 border-success">
@@ -17,7 +27,9 @@ require_once './superAdmin-header.php';
         </div>
     </div>
 </div>
+</div>
 
+<div id="block-user-box" class="mt-4" style="display: none;">
 <div class="row">
     <div class="col-lg-12">
         <div class="card my-2 border-danger">
@@ -31,6 +43,7 @@ require_once './superAdmin-header.php';
             </div>
         </div>
     </div>
+</div>
 </div>
 
 <!-- Display User's in Details Model -->
@@ -78,6 +91,21 @@ require_once './superAdmin-header.php';
 
 <script>
     $(document).ready(function(){
+
+      $("#block-box-btn").click(function(){
+          $("#active-user-box").hide();
+          $(this).hide();
+          $("#active-box-btn").show();
+          $("#block-user-box").show();
+        });
+
+        $("#active-box-btn").click(function(){
+          $("#block-user-box").hide();
+          $(this).hide();
+          $("#block-box-btn").show();
+          $("#active-user-box").show();
+        });
+
 
         fetchAllUsers();
       //Fetch All Users Ajax Request
