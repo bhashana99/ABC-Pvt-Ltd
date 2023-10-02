@@ -436,8 +436,8 @@ if(isset($_POST['action']) && $_POST['action'] == 'fetchAllCompleteOrders'){
                     <td>'.$order['products'].'</td>
                     <td><i class="fa-solid fa-rupee-sign"></i>&nbsp;&nbsp;'.number_format($total_price,2).'</td>
                     <td>
-                    <a href="#" id="'.$order['order_id'].'" title="More info" 
-                    class="text-white restoreOrder badge badge-dark p-2" >
+                    <a href="#" id="'.$order['order_id'].'" title="incomplete order" 
+                    class="text-black restoreOrder badge badge-warning p-2" >
                      incomplete</a>&nbsp;&nbsp;
                 
                  </td>

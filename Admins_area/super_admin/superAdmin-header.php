@@ -7,6 +7,7 @@ if(!isset($_SESSION['sAemail'])){
 
 // Define an array of titles for each page
 $titles = array(
+    'superAdmin-orders.php' => 'Orders',
     'superAdmin-insertProduct.php' => 'Insert Product',
     'superAdmin-productCustomize.php' => 'Product Customize',
     'superAdmin-admins.php' => 'Customize Admins',
@@ -81,6 +82,10 @@ $title = isset($titles[$currentFile]) ? $titles[$currentFile] : 'Default Title';
                 <h4 class="text-light text-center p-2">Super Admin panel</h4>
 
                 <div class="list-group list-group-flush mt-3">
+                    <a href="superAdmin-orders.php" class="list-group-item text-light admin-link
+                    <?= (basename($_SERVER['PHP_SELF']) == 'superAdmin-orders.php')? "nav-active":"" ?>">
+                    <i class="fa-solid fa-truck-ramp-box"></i>&nbsp;&nbsp;Orders
+                    </a>
 
                     <a href="superAdmin-productCustomize.php" class="list-group-item text-light admin-link
                     <?= (basename($_SERVER['PHP_SELF']) == 'superAdmin-productCustomize.php')? "nav-active":"" ?>">
