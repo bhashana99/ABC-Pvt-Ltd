@@ -366,16 +366,18 @@ if(isset($_POST['action']) && $_POST['action'] == 'fetchAllProcessedOrders'){
         </thead>
                 <tbody>';
                 foreach($data as $order){
+                    $total_price = $order['amount_paid'];
+
                     $output .= '<tr>
                     <td>'.$order['order_id'].'</td>
                     <td>'.$order['products'].'</td>
-                    <td>'.$order['amount_paid'].'</td>
+                    <td><i class="fa-solid fa-rupee-sign"></i>&nbsp;&nbsp;'.number_format($total_price,2).'</td>
                     <td>
                     <a href="#" id="'.$order['order_id'].'" title="More info" 
                      class="text-primary moreInfo" >
                      <i class="fa-solid fa-circle-info"></i></a>&nbsp;&nbsp;
                 
-                    <a href="#" id="'.$order['order_id'].'" title="Finish Order" class="text-danger orderFinishIcon" >
+                    <a href="#" id="'.$order['order_id'].'" title="Order Complete" class="text-success orderFinishIcon" >
                     <i class="fa-solid fa-clipboard-check"></i></a>&nbsp;&nbsp;
                  </td>
                 </tr>';
@@ -395,7 +397,7 @@ if(isset($_POST['info_id'])){
 
     $row = $admin->orderInfo($id,0);
     echo json_encode($row);
-    
+
 }
 
 
