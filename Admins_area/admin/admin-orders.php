@@ -26,7 +26,7 @@ require_once './admin-header.php';
                 <h4 class="m-0"><i class="fa-solid fa-clipboard-check"></i>&nbsp;&nbsp;Completed Orders</h4>
             </div>
             <div class="card-body">
-                <div class="table-responsive" id="showAllBlockedUsers">
+                <div class="table-responsive" id="showAllCompleteOrders">
                     <p class="text-center align-self-center lead">Please Wait...</p>
                 </div>
             </div>
@@ -127,7 +127,22 @@ require_once './admin-header.php';
                 });     
         });
 
-        
+
+        fetchAllCompleteOrders();
+        //fetch all complete order details
+        function fetchAllCompleteOrders(){
+            $.ajax({
+                url:'../assets/php/admin-action.php',
+                method: 'post',
+                data: {action: 'fetchAllCompleteOrders'},
+                success: function(response){
+                    // console.log(response);
+                    $("#showAllCompleteOrders").html(response);
+                    $("table").DataTable();
+                }
+            });
+        }
+
 
 
     });

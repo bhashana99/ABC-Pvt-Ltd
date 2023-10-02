@@ -387,6 +387,10 @@ if(isset($_POST['action']) && $_POST['action'] == 'fetchAllProcessedOrders'){
                         
                 echo $output; 
     }
+    
+    else{
+        echo '<h3 class="text-center text-secondary">:( No any Order yet!</h3>';
+       }
 
 }
 
