@@ -3,8 +3,16 @@
 require_once './admin-header.php';
 ?>
 
+<div  class="d-flex justify-content-end">
+    <button id="complete-box-btn" class="btn btn-success btn-lg  mt-4 "> <i class="fa-solid fa-repeat"></i> Complete Orders</button>
+</div>
 
-<div class="row mt-4">
+<div  class="d-flex justify-content-end" >
+    <button id="process-box-btn" class="btn btn-warning btn-lg  mt-4 " style="display: none;"> <i class="fa-solid fa-repeat"></i>Process Orders </button>
+</div>
+
+<div id="processed-order-box" class="mt-4">
+<div class="row ">
     <div class="col-lg-12">
         <div class="card my-2 border-warning">
             <div class="card-header bg-warning text-white">
@@ -18,8 +26,11 @@ require_once './admin-header.php';
         </div>
     </div>
 </div>
+</div>
 
-<div class="row mt-5">
+
+<div id="complete-order-box" class="mt-4" style="display: none;">
+<div class="row ">
     <div class="col-lg-12">
         <div class="card my-2 border-success">
             <div class="card-header bg-success text-white">
@@ -32,7 +43,9 @@ require_once './admin-header.php';
             </div>
         </div>
     </div>
+</div> 
 </div>
+
 
 
 <!-- Footer Area -->
@@ -42,6 +55,22 @@ require_once './admin-header.php';
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
     $(document).ready(function(e){
+
+
+        $("#complete-box-btn").click(function(){
+          $("#processed-order-box").hide();
+          $(this).hide();
+          $("#process-box-btn").show();
+          $("#complete-order-box").show();
+        });
+
+        $("#process-box-btn").click(function(){
+          $("#complete-order-box").hide();
+          $(this).hide();
+          $("#complete-box-btn").show();
+          $("#processed-order-box").show();
+        });
+      
 
         fetchAllProcessedOrders();
         //fetch all Orders to be processed details
@@ -98,7 +127,7 @@ require_once './admin-header.php';
 
             Swal.fire({
                 title: 'Are you sure?',
-                text: "You want to complete this Order!",
+                text: "Is this order Complete!",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
