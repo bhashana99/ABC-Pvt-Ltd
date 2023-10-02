@@ -120,6 +120,7 @@ require_once './admin-header.php';
                         timer: 1500
                     });
                     fetchAllProcessedOrders();
+                    fetchAllCompleteOrders();
 
                 }
             });
@@ -142,6 +143,44 @@ require_once './admin-header.php';
                 }
             });
         }
+
+        //restore incomplete order ajax request
+        $("body").on("click",".restoreOrder", function(e){
+            e.preventDefault();
+            var res_id = $(this).attr("id");
+
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "Is this Order Incomplete!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, Incomplete it!'
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                url:'../assets/php/admin-action.php',
+                method: 'post',
+                data:{res_id:res_id},
+                success:function(response){
+                    // console.log(response);
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'This order Add  Orders to be processed Table',
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    fetchAllProcessedOrders();
+                    fetchAllCompleteOrders();
+
+                }
+            });
+                }
+                });     
+        });
+
 
 
 

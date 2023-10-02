@@ -411,5 +411,55 @@ if(isset($_POST['complete_id'])){
     $admin->completeOrder($id,1);
 } 
 
+//Handle restore incomplete order ajax request
+if(isset($_POST['action']) && $_POST['action'] == 'fetchAllCompleteOrders'){
+    // echo 'working';
+    $output = '';
+    $data = $admin->fetchAllOrders(1);
+
+    if($data){
+        $output .= '<table class="table table-striped table-bordered text-center">
+        <thead>
+            <tr>
+                <th>Order id</th>
+                <th>Products</th>
+                <th>Amount</th>
+                <th>Action</th>    
+            </tr>
+        </thead>
+                <tbody>';
+                foreach($data as $order){
+                    $total_price = $order['amount_paid'];
+
+                    $output .= '<tr>
+                    <td>'.$order['order_id'].'</td>
+                    <td>'.$order['products'].'</td>
+                    <td><i class="fa-solid fa-rupee-sign"></i>&nbsp;&nbsp;'.number_format($total_price,2).'</td>
+                    <td>
+                    <a href="#" id="'.$order['order_id'].'" title="More info" 
+                    class="text-white restoreOrder badge badge-dark p-2" >
+                     incomplete</a>&nbsp;&nbsp;
+                
+                 </td>
+                </tr>';
+                }
+                $output .= '</tbody>
+                </table>';
+                        
+                echo $output; 
+    }
+    
+    else{
+        echo '<h3 class="text-center text-secondary">:( No any Complete Order yet!</h3>';
+       }
+
+}
+
+//Handle complete order ajax
+if(isset($_POST['res_id'])){
+    // print_r($_POST);
+    $id = $_POST['res_id'];
+    $admin->completeOrder($id,0);
+}
 
 ?>
