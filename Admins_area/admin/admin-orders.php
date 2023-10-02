@@ -91,6 +91,20 @@ require_once './admin-header.php';
             });
         });
 
+        //order complete list ajax request
+        $("body").on("click",".orderCompleteIcon", function(e){
+            e.preventDefault();
+            var complete_id = $(this).attr("id");
+            $.ajax({
+                url:'../assets/php/admin-action.php',
+                method: 'post',
+                data:{complete_id:complete_id},
+                success:function(response){
+                    console.log(response);
+                }
+            });
+        })
+
 
     });
 </script>

@@ -377,7 +377,7 @@ if(isset($_POST['action']) && $_POST['action'] == 'fetchAllProcessedOrders'){
                      class="text-primary moreInfo" >
                      <i class="fa-solid fa-circle-info"></i></a>&nbsp;&nbsp;
                 
-                    <a href="#" id="'.$order['order_id'].'" title="Order Complete" class="text-success orderFinishIcon" >
+                    <a href="#" id="'.$order['order_id'].'" title="Order Complete" class="text-success orderCompleteIcon" >
                     <i class="fa-solid fa-clipboard-check"></i></a>&nbsp;&nbsp;
                  </td>
                 </tr>';
@@ -399,6 +399,8 @@ if(isset($_POST['info_id'])){
     echo json_encode($row);
 
 }
+
+//Handle complete order ajax 
 
 
 ?>
