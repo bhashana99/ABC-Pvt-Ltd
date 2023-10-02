@@ -58,6 +58,21 @@ require_once './admin-header.php';
             });
         }
 
+        //Display Order info
+        $("body").on("click",".moreInfo", function(e){
+            e.preventDefault();
+
+            var info_id = $(this).attr("id");
+
+            $.ajax({
+                url:'../assets/php/admin-action.php',
+                method: 'post',
+                data: {info_id: info_id},
+                success:function(response){
+                    console.log(response);
+                }
+            });
+        });
 
 
     });

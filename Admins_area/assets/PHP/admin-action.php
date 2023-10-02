@@ -371,8 +371,8 @@ if(isset($_POST['action']) && $_POST['action'] == 'fetchAllProcessedOrders'){
                     <td>'.$order['products'].'</td>
                     <td>'.$order['amount_paid'].'</td>
                     <td>
-                    <a href="#" id="'.$order['order_id'].'" title="More details" 
-                     class="text-primary moreDetailsIcon" data-toggle="modal" data-target="#moreDetailModal" >
+                    <a href="#" id="'.$order['order_id'].'" title="More info" 
+                     class="text-primary moreInfo" >
                      <i class="fa-solid fa-circle-info"></i></a>&nbsp;&nbsp;
                 
                     <a href="#" id="'.$order['order_id'].'" title="Finish Order" class="text-danger orderFinishIcon" >
