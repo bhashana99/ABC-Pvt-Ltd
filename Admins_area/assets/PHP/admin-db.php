@@ -214,5 +214,19 @@ class Admin extends Database
         return true;
     }
 
-    
+    public function addImage($location){
+        $sql = "INSERT INTO images(location) VALUES (:location)";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute(['location'=>$location]);
+        return true;
+    }
+
+    public function getImageId($location){
+        $sql = "SELECT id FROM images WHERE location=:location";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute(['location'=>$location]);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $result;
+    }
 }
