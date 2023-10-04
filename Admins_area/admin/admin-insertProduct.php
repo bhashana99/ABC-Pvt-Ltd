@@ -19,6 +19,7 @@ if(isset($_POST['insert_product'])){
         $haveProduct = $pAdmin->check_product($product_title);
         if($haveProduct == null){
             $pAdmin->insert_product($product_title, $product_description, $product_image, $product_price, $status);
+
             move_uploaded_file($tmp_image, "../../images/product_images/$product_image");
 
             echo "<script>
