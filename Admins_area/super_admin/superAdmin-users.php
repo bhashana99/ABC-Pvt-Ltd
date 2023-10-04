@@ -143,7 +143,7 @@ require_once './superAdmin-header.php';
            $("#getVerified").text('Verified :'+data.verified);
 
            if(data.photo != ''){
-            $("#getImage").html('<img src="../assets/php/'+data.photo+'" class="img-thumbnail img-fluid align-self-center" width="280px" >');
+            $("#getImage").html('<img src="../../images/user_images/'+data.photo+'" class="img-thumbnail img-fluid align-self-center" width="280px" >');
            }
            else{
             $("#getImage").html('<img src="../../images/avatar.png" class="img-thumbnail img-fluid align-self-center" width="280px" >');

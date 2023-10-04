@@ -211,8 +211,6 @@ if($data){
                                 <div class="form-group">
                                     <select name="pmode" class="form-control">
                                         <option value="" selected disabled>Cash On Delivery</option>
-                                        <option value="cod">Cash On Delivery</option>
-                                        <option value="netBanking">Net Banking</option>
                                         <option value="cards">Debit/Credit Card</option>
                                     </select>
                                 </div>

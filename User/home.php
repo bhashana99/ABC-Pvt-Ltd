@@ -16,7 +16,7 @@ $user = new UserDB();
         foreach ($products as $product):
             $imageUrl = $baseImageUrl . $product['image'];
         ?>
-        <div class="col-sm-6 col-md-4 col-lg-3 mb-2">
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-2">
             <!-- <div class="card-deck"> -->
                 <div class="card p-2 border-secondary mb-2 shadow" style="height: 100%;">
                     <img src="<?= $imageUrl ?>" alt="product image" class="card-img-top" height="250">
